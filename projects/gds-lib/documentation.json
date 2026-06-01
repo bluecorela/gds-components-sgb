@@ -1,0 +1,260 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Username',\n    placeholder: 'Enter your username',\n    type: 'text',\n    required: true,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsAlert>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success'],\n    },\n    disabled: { control: 'boolean' }\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsInput>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsInput',\n  component: GdsInput,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsInput],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search'],\n    },\n    disabled: { control: 'boolean' },\n    required: { control: 'boolean' },\n  },\n}"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/.storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Preview",
+                "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GdsAlert>",
+                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GdsInput>",
+                "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GdsAlert>",
+                    "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success'],\n    },\n    disabled: { control: 'boolean' }\n  },\n}"
+                }
+            ],
+            "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Username',\n    placeholder: 'Enter your username',\n    type: 'text',\n    required: true,\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GdsInput>",
+                    "defaultValue": "{\n  title: 'GDS Components/GdsInput',\n  component: GdsInput,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsInput],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search'],\n    },\n    disabled: { control: 'boolean' },\n    required: { control: 'boolean' },\n  },\n}"
+                }
+            ],
+            "projects/gds-lib/.storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/.storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Preview",
+                    "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GdsAlert>",
+                    "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GdsInput>",
+                    "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "children": []
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/gds-lib/.storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

@@ -1,0 +1,51 @@
+@use '../styles/mixins';
+
+.alert {
+    &__content {
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #F5F5F5;
+        
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-self: center;
+        padding-left: 8px;
+        gap: 8px;
+        position: relative;
+        ::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background-color: #0F4DBC;
+            border-radius: 2px;
+        }
+    }
+}
+
+.line {
+    height: 50px;
+    &__info {
+        border-left: 2px solid #0F4DBC;
+    }
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.text {
+  @include mixins.gds-font-nunito(
+    $font-size: 14px,
+    $line-height: 21px,
+    $color: #3F3F3F
+  );
+}

@@ -1,0 +1,14 @@
+@mixin gds-font-nunito(
+    $font-weight: 400,
+    $font-size: 22px,
+    $line-height: 27.5px,
+    $letter-spacing: 0.1px,
+    $color: #1E1E1E
+) {
+    font-family: NunitoSans, Arial;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+    color: $color;
+}
