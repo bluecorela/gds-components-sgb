@@ -16,7 +16,7 @@ const meta: Meta<GdsInput> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search'],
+      options: ['text', 'phone', 'money', 'search'],
     },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },

@@ -1,1 +1,17 @@
-<p>gds-input works!</p>
+<div>
+    <template if="type === 'text'">
+        <lib-gds-input-text></lib-gds-input-text>
+    </template>
+
+    <template if="type === 'phone'">
+        <lib-gds-input-phone></lib-gds-input-phone>
+    </template>
+
+    <template if="type === 'money'">
+        <lib-gds-input-money></lib-gds-input-money>
+    </template>
+
+    <template if="type === 'search'">
+        <lib-gds-input-search></lib-gds-input-search>
+    </template>
+</div>

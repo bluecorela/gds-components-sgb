@@ -48,7 +48,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GdsInput>",
-                "defaultValue": "{\n  title: 'GDS Components/GdsInput',\n  component: GdsInput,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsInput],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search'],\n    },\n    disabled: { control: 'boolean' },\n    required: { control: 'boolean' },\n  },\n}"
+                "defaultValue": "{\n  title: 'GDS Components/GdsInput',\n  component: GdsInput,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsInput],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['text', 'phone', 'money', 'search'],\n    },\n    disabled: { control: 'boolean' },\n    required: { control: 'boolean' },\n  },\n}"
             },
             {
                 "name": "preview",
@@ -129,7 +129,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GdsInput>",
-                    "defaultValue": "{\n  title: 'GDS Components/GdsInput',\n  component: GdsInput,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsInput],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search'],\n    },\n    disabled: { control: 'boolean' },\n    required: { control: 'boolean' },\n  },\n}"
+                    "defaultValue": "{\n  title: 'GDS Components/GdsInput',\n  component: GdsInput,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsInput],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['text', 'phone', 'money', 'search'],\n    },\n    disabled: { control: 'boolean' },\n    required: { control: 'boolean' },\n  },\n}"
                 }
             ],
             "projects/gds-lib/.storybook/preview.ts": [

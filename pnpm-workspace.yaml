@@ -1,2 +1,6 @@
 allowBuilds:
   '@compodoc/compodoc': true
+  '@parcel/watcher': false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false

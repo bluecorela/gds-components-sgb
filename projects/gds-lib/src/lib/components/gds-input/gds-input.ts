@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'lib-gds-input',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class GdsInput {
-
+  @Input() type: 'text' | 'phone' | 'money' | 'calendar' | 'search' = 'text';
+  @Input() disabled = false;
+  @Input() required = false;
+  @Input() placeholder = '';
+  @Input() label = '';
 }
