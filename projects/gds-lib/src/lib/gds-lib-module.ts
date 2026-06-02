@@ -9,12 +9,32 @@ import { GdsInputMoney } from './components/gds-input/components/gds-input-money
 import { GdsInputPhone } from './components/gds-input/components/gds-input-phone/gds-input-phone';
 import { GdsInputSearch } from './components/gds-input/components/gds-input-search/gds-input-search';
 import { GdsInputText } from './components/gds-input/components/gds-input-text/gds-input-text';
+import { GdsRadiobutton } from './components/gds-radiobutton/gds-radiobutton';
+import { GdsFileUpload } from './components/gds-file-upload/gds-file-upload';
+import { GdsFooter } from './components/gds-footer/gds-footer';
+import { GdsHeader } from './components/gds-header/gds-header';
+import { GdsLoader } from './components/gds-loader/gds-loader';
+import { GdsModal } from './components/gds-modal/gds-modal';
+import { GdsOtp } from './components/gds-otp/gds-otp';
+import { GdsSadpath } from './components/gds-sadpath/gds-sadpath';
+import { GdsSelect } from './components/gds-select/gds-select';
+import { GdsShowdocument } from './components/gds-showdocument/gds-showdocument';
 
 const gdsComponents = [
   GdsInput,
   GdsAlert,
   GdsCalendar,
-  GdsBullets
+  GdsBullets,
+  GdsFileUpload,
+  GdsHeader,
+  GdsFooter,
+  GdsShowdocument,
+  GdsSelect,
+  GdsSadpath,
+  GdsRadiobutton,
+  GdsOtp,
+  GdsModal,
+  GdsLoader
 ];
 
 const gdsInputComponent = [
