@@ -10,6 +10,10 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-onboarding"
   ],
-  "framework": "@storybook/angular"
+  "framework": "@storybook/angular",
+  "staticDirs": [{
+    from: '../src/assets',
+    to: 'assets'
+  }]
 };
 export default config;

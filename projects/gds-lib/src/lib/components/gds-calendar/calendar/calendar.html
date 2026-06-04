@@ -1,0 +1,54 @@
+<div class="calendar__container">
+    <!-- header -->
+    <div class="calendar-header">
+        <div class="calendar-header__nav" (click)="currentView() === 'days' ? currentView.set('years') : currentView.set('days')">
+            <!-- titulo -->
+            <div id="calendar-title"></div>
+            <mat-icon [svgIcon]="currentView() === 'days' ? 'chevron_abajo' : 'chevron_arriba'"></mat-icon>
+        </div>
+        <div class="calendar-header__nav">
+            <button matIconButton id="prev-view">
+                <mat-icon svgIcon="chevron_izquierda"></mat-icon>
+            </button>
+            <button matIconButton id="next-view">
+                <mat-icon svgIcon="chevron_derecha"></mat-icon>
+            </button>
+        </div>
+    </div>
+    <!-- body -->
+    <div class="calendar-body">
+        @switch (currentView()) {
+            @case ('days') {
+                <div class="calendar-weekdays">
+                    <!-- Weekday Names -->
+                    @for (item of ['L', 'M', 'X', 'J', 'V', 'S', 'D']; track $index) {
+                        <div class="weekdays">{{ item }}</div>
+                    }
+                </div>
+                <div #calendarDates class="calendar-days" id="calendar-days">
+                    <!-- Dates will be populated here -->
+                </div>
+            }
+            @case ('months') {
+                <div 
+                    #calendarMonths
+                    class="calendar-months"
+                    id="calendar-months">
+                    <!-- Month Names -->
+                </div>
+            }
+            @case ('years') {
+                <div 
+                    #calendarYears 
+                    class="calendar-years" 
+                    id="calendar-years">
+                </div>
+            }
+        }
+    </div>
+    <!-- footer -->
+    <div class="calendar-footer">
+        <button class="secondary-button" (click)="cancel()">Cancelar</button>
+        <button class="primary-button" (click)="accept()">Aceptar</button>
+    </div>
+</div>

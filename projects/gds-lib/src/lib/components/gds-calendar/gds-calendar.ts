@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './gds-calendar.scss',
   standalone: false,
 })
-export class GdsCalendar {}
+export class GdsCalendar {
+  public isOpen: boolean = false;
+
+  constructor() {}
+
+  ngOnInit(): void {
+  }
+}

@@ -1,1 +1,9 @@
-<p>gds-calendar works!</p>
+<div>
+    <input type="text" placeholder="Haz click para desplegar..." cdkOverlayOrigin #origen="cdkOverlayOrigin"
+        (click)="isOpen = true" />
+
+    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="origen" [cdkConnectedOverlayOpen]="isOpen"
+        (overlayOutsideClick)="isOpen = false">
+        <lib-calendar></lib-calendar>
+    </ng-template>
+</div>
