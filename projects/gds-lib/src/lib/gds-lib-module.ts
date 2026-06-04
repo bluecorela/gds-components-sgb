@@ -19,6 +19,21 @@ import { GdsOtp } from './components/gds-otp/gds-otp';
 import { GdsSadpath } from './components/gds-sadpath/gds-sadpath';
 import { GdsSelect } from './components/gds-select/gds-select';
 import { GdsShowdocument } from './components/gds-showdocument/gds-showdocument';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MAT_DATE_LOCALE, MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { Calendar } from './components/gds-calendar/calendar/calendar';
+import { MatIcon } from "@angular/material/icon";
+import { provideHttpClient } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
+
+const angularMaterialComponents = [
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatInputModule,
+  MatButtonModule
+];
 
 const gdsComponents = [
   GdsInput,
@@ -48,14 +63,23 @@ const gdsInputComponent = [
 @NgModule({
   declarations: [
     gdsComponents,
-    gdsInputComponent
+    gdsInputComponent,
+    Calendar
   ],
   imports: [
     CommonModule,
-    // MatIconModule
-  ],
+    OverlayModule,
+    angularMaterialComponents
+    ,
+    MatIcon
+],
   exports: [
     gdsComponents
+  ],
+  providers: [
+    provideHttpClient(),
+    provideNativeDateAdapter(),
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
   ],
 })
 export class GdsLibModule {}

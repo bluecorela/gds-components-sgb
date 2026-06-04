@@ -1,0 +1,279 @@
+@use '../../styles/mixins';
+
+@mixin display-grid(
+    $display: grid,
+    $grid-template-columns: repeat(4, 1fr),
+    $gap: 0
+) {
+    display: $display;
+    grid-template-columns: $grid-template-columns;
+    gap: $gap;
+}
+
+.calendar {
+
+    &__container {
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        background-color: #FFFFFF;
+        padding: 24px 16px 24px 16px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 48px 0px rgba(30, 30, 30, 0.2);
+    }
+}
+
+// days view
+.calendar-weekdays, .calendar-days {
+    @include display-grid(
+        $grid-template-columns: repeat(7, 1fr),
+        $gap: 8px
+    );
+}
+
+// months view
+.calendar-months {
+    @include display-grid($gap: 16px 8px);
+    @include mixins.gds-font-nunito(
+        $font-size: 16px,
+        $line-height: 24px,
+        $letter-spacing: 0.2px
+    );
+}
+
+// years view
+.calendar-years {
+    @include display-grid($gap: 8px);
+    @include mixins.gds-font-nunito(
+        $font-size: 16px,
+        $line-height: 24px,
+        $letter-spacing: 0.2px
+    );
+}
+
+.weekdays {
+    width: 30px;
+    height: 30px;
+}
+
+.calendar-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.calendar-weekdays div {
+    text-align: center;
+    @include mixins.gds-font-nunito(
+        $font-weight: 700,
+        $font-size: 14px,
+        $line-height: 21px,
+        $letter-spacing: 0.1px,
+        $color: #949494
+    );
+}
+
+.calendar-days {
+    @include mixins.gds-font-nunito(
+        $font-size: 16px,
+        $line-height: 24px,
+        $letter-spacing: 0.2px
+    );
+}
+
+@mixin before(
+    $width: 30px,
+    $height: 30px,
+    $border-radius: 50%,
+    $border: 1px solid #00693C,
+    $background-color: #FFFFFF
+) {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        width: $width;
+        height: $height;
+        border-radius: $border-radius;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: $border;
+        background-color: $background-color;
+        z-index: -1;
+    }
+}
+
+@mixin display(
+    $display: flex,
+    $justify-content: center,
+    $align-items: center,
+    $width: 30px,
+    $height: 30px,
+    $isolation: isolate,
+) {
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    width: $width;
+    height: $height;
+    isolation: $isolation;
+}
+
+:host {
+    display: block;
+
+    ::ng-deep .day {
+        @include display();
+
+        &.today {
+            @include before();
+        }
+
+        &.selected {
+            @include mixins.gds-font-nunito(
+                $font-weight: 700,
+                $font-size: 16px,
+                $line-height: 24px,
+                $letter-spacing: 0.2px,
+                $color: #FFFFFF
+            );
+            @include before(
+                $border: 0,
+                $background-color: #00693C
+            );
+        }
+    }
+
+    ::ng-deep .month {
+        @include display(
+            $width: 64px,
+            $height: 32px
+        );
+
+        &.today {
+            @include before(
+                $width: 64px,
+                $height: 32px,
+                $border-radius: 16px,
+            );
+        }
+
+        &.selected {
+            @include mixins.gds-font-nunito(
+                $font-weight: 700,
+                $font-size: 16px,
+                $line-height: 24px,
+                $letter-spacing: 0.2px,
+                $color: #FFFFFF
+            );
+            @include before(
+                $width: 64px,
+                $height: 32px,
+                $border-radius: 16px,
+                $border: 0,
+                $background-color: #00693C
+            );
+        }
+    }
+
+    ::ng-deep .year {
+        @include display(
+            $width: 64px,
+            $height: 32px
+        );
+
+        &.today {
+            @include before(
+                $width: 64px,
+                $height: 32px,
+                $border-radius: 16px,
+            );
+        }
+
+        &.selected {
+            @include mixins.gds-font-nunito(
+                $font-weight: 700,
+                $font-size: 16px,
+                $line-height: 24px,
+                $letter-spacing: 0.2px,
+                $color: #FFFFFF
+            );
+            @include before(
+                $width: 64px,
+                $height: 32px,
+                $border-radius: 16px,
+                $border: 0,
+                $background-color: #00693C
+            );
+        }
+    }
+}
+
+.calendar-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.primary-button {
+    width: 138px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border: 1px solid #00693C;
+    padding: 12px 16px 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    @include mixins.gds-font-nunito(
+        $font-weight: 700,
+        $font-size: 16px,
+        $line-height: 24px,
+        $letter-spacing: 0.1px,
+        $color: #00693C
+    );
+}
+
+.secondary-button {
+    width: 138px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border: none;
+    padding: 12px 16px 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    @include mixins.gds-font-nunito(
+        $font-weight: 700,
+        $font-size: 16px,
+        $line-height: 24px,
+        $letter-spacing: 0.1px,
+        $color: #00693C
+    );
+}
+
+
+.calendar-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include mixins.gds-font-nunito(
+        $font-weight: 700,
+        $font-size: 18px,
+        $line-height: 27px,
+        $letter-spacing: 0.1px,
+        $color: #3F3F3F
+    );
+    &__nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+}
