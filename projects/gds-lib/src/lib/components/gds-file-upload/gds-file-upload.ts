@@ -23,7 +23,7 @@ export interface FileUploadError {
 })
 
 export class GdsFileUpload {
-  @Input() title = 'Ingresa los documentos:';
+  @Input() title = '';
   @Input() body = '';
   @Input() maxFiles = 3;
   @Input() maxFileSize = 10 * 1024 * 1024;
@@ -32,7 +32,7 @@ export class GdsFileUpload {
   @Input() uploadedFiles: UploadedFile[] = [];
   @Output() filesChange = new EventEmitter<File[]>();
   @Output() uploadError = new EventEmitter<FileUploadError>();
-  private readonly forbiddenNamePattern = /[ $@&\/()]/;
+  private readonly formNamePattern = /[ $@&\/()]/;
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -78,7 +78,7 @@ export class GdsFileUpload {
 
   onDeleteClick(index: number): void {
     // Futuro:
-    // abrir modal de confirmación par eliminar el archivo
+    // abrir modal de confirmación para eliminar el archivo
     this.removeFile(index);
   }
 
@@ -96,7 +96,7 @@ export class GdsFileUpload {
   }
 
   private validateFile(file: File): FileUploadError['code'] | null {
-    if (this.forbiddenNamePattern.test(file.name)) {
+    if (this.formNamePattern.test(file.name)) {
       return 'INVALID_NAME';
     }
     if (file.size > this.maxFileSize) {

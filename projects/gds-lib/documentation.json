@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    text: 'Corresponde a uno o más documentos oficiales que confirman los ingresos que percibes. Ej: Ficha de seguro o talonario.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+                "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
             },
             {
                 "name": "Default",
@@ -49,16 +49,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Username',\n    placeholder: 'Enter your username',\n    type: 'text',\n    required: true,\n  },\n}"
-            },
-            {
-                "name": "ErrorFile",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n  }\n}"
             },
             {
                 "name": "FailedFile",
@@ -189,7 +179,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    text: 'Corresponde a uno o más documentos oficiales que confirman los ingresos que percibes. Ej: Ficha de seguro o talonario.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+                    "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
                 },
                 {
                     "name": "meta",
@@ -234,16 +224,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body:\n      'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    maxFiles: 3,\n    maxFileSize: 10 * 1024 * 1024,\n    acceptedFileTypes: '.pdf,.png,.jpg,.jpeg',\n    showStatus: true\n  }\n}"
-                },
-                {
-                    "name": "ErrorFile",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n  }\n}"
                 },
                 {
                     "name": "FailedFile",
@@ -453,16 +433,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ErrorFile",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
