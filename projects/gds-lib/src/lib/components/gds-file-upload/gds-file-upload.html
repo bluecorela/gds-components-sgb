@@ -1,1 +1,92 @@
-<p>gds-file-upload works!</p>
+<div class="gds-file-upload">
+  <div class="gds-file-upload__content">
+    <div class="gds-file-upload__header">
+      <h2 class="gds-file-upload__title">
+        {{ title }}
+      </h2>
+
+      <p class="gds-file-upload__body">
+        {{ body }}
+      </p>
+    </div>
+
+    <div class="gds-file-upload__dropzone-wrapper">
+      <input
+        id="file-upload-input"
+        class="gds-file-upload__input"
+        type="file"
+        [attr.accept]="acceptedFileTypes"
+        (change)="onFileSelected($event)"
+        multiple
+      />
+      <label
+        class="gds-file-upload__dropzone"
+        for="file-upload-input"
+      >
+        <img
+          class="gds-file-upload__icon-image"
+          [src]="uploadIcon"
+          alt=""
+        />
+
+        <div class="gds-file-upload__dropzone-text">
+          <div class="gds-file-upload__action">
+            <span class="gds-file-upload__action-link">
+              Presiona aquí
+            </span>
+            <span class="gds-file-upload__action-text">
+              para cargar los archivos
+            </span>
+          </div>
+          <span class="gds-file-upload__hint">
+            Formatos permitidos: PNG, JPEG, PDF.
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  @if (uploadedFiles.length) {
+    <ul class="gds-file-upload__list">
+      @for (item of uploadedFiles; track item.name; let i = $index) {
+        <li class="gds-file-upload__item">
+          <div class="gds-file-upload__file-info">
+            <div class="gds-file-upload__file-left">
+              <span class="gds-file-upload__file-name">
+                {{ item.name }}
+              </span>
+            </div>
+
+            <div class="gds-file-upload__file-right">
+              <span class="gds-file-upload__file-size">
+                {{ item.size }}
+              </span>
+              @if (showStatus) {
+                <span
+                  class="gds-file-upload__status-chip"
+                  [class.chip--success]="item.status === 'listo'"
+                  [class.chip--error]="item.status === 'fallido'"
+                >
+                  {{ item.status === 'listo' ? 'Listo' : 'Fallido' }}
+                </span>
+              }
+
+              <button
+                type="button"
+                class="gds-file-upload__delete"
+                (click)="onDeleteClick(i)"
+                aria-label="Eliminar archivo"
+              >
+                <img
+                  class="gds-file-upload__delete-icon"
+                  src="assets/trash_file.svg"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</div>

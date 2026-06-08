@@ -34,11 +34,31 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body:\n      'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    maxFiles: 3,\n    maxFileSize: 10 * 1024 * 1024,\n    acceptedFileTypes: '.pdf,.png,.jpg,.jpeg',\n    showStatus: true\n  }\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'Username',\n    placeholder: 'Enter your username',\n    type: 'text',\n    required: true,\n  },\n}"
+            },
+            {
+                "name": "FailedFile",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    showStatus: true,\n    uploadedFiles: [\n      {\n        file: {} as File,\n        name: 'archivo.pdf',\n        size: '1.2 Mb',\n        status: 'fallido',\n      }\n    ]\n  }\n}"
             },
             {
                 "name": "meta",
@@ -64,6 +84,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsFileUpload>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsFileUpload',\n  component: GdsFileUpload,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule]\n    })\n  ],\n  argTypes: {\n    title: {\n      control: 'text'\n    },\n    body: {\n      control: 'text'\n    },\n    maxFiles: {\n      control: 'number'\n    },\n    maxFileSize: {\n      control: 'number'\n    },\n    acceptedFileTypes: {\n      control: 'text'\n    },\n    showStatus: {\n      control: 'boolean'\n    }\n  }\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -79,6 +109,16 @@
                 "deprecationMessage": "",
                 "type": "Preview",
                 "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+            },
+            {
+                "name": "SuccessFile",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    showStatus: true,\n    uploadedFiles: [\n      {\n        file: {} as File,\n        name: 'archivo.pdf',\n        size: '1.2 Mb',\n        status: 'listo'\n      }\n    ]\n  }\n}"
             }
         ],
         "functions": [],
@@ -100,6 +140,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<GdsCalendar>",
                 "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GdsFileUpload>",
+                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -163,6 +214,48 @@
                     "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule\n        ]\n    }),\n  ],\n}"
                 }
             ],
+            "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body:\n      'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    maxFiles: 3,\n    maxFileSize: 10 * 1024 * 1024,\n    acceptedFileTypes: '.pdf,.png,.jpg,.jpeg',\n    showStatus: true\n  }\n}"
+                },
+                {
+                    "name": "FailedFile",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    showStatus: true,\n    uploadedFiles: [\n      {\n        file: {} as File,\n        name: 'archivo.pdf',\n        size: '1.2 Mb',\n        status: 'fallido',\n      }\n    ]\n  }\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GdsFileUpload>",
+                    "defaultValue": "{\n  title: 'GDS Components/GdsFileUpload',\n  component: GdsFileUpload,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule]\n    })\n  ],\n  argTypes: {\n    title: {\n      control: 'text'\n    },\n    body: {\n      control: 'text'\n    },\n    maxFiles: {\n      control: 'number'\n    },\n    maxFileSize: {\n      control: 'number'\n    },\n    acceptedFileTypes: {\n      control: 'text'\n    },\n    showStatus: {\n      control: 'boolean'\n    }\n  }\n}"
+                },
+                {
+                    "name": "SuccessFile",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    showStatus: true,\n    uploadedFiles: [\n      {\n        file: {} as File,\n        name: 'archivo.pdf',\n        size: '1.2 Mb',\n        status: 'listo'\n      }\n    ]\n  }\n}"
+                }
+            ],
             "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts": [
                 {
                     "name": "Default",
@@ -221,6 +314,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GdsCalendar>",
                     "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GdsFileUpload>",
+                    "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -313,6 +419,56 @@
             },
             {
                 "filePath": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FailedFile",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SuccessFile",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
