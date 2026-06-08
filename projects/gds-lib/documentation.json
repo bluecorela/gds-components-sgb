@@ -78,7 +78,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GdsCalendar>",
-                "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule\n        ]\n    }),\n  ],\n}"
+                "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule,\n            ReactiveFormsModule\n        ]\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -211,7 +211,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GdsCalendar>",
-                    "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule\n        ]\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule,\n            ReactiveFormsModule\n        ]\n    }),\n  ],\n}"
                 }
             ],
             "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts": [

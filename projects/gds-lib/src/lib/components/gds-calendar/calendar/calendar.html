@@ -21,7 +21,7 @@
             @case ('days') {
                 <div class="calendar-weekdays">
                     <!-- Weekday Names -->
-                    @for (item of ['L', 'M', 'X', 'J', 'V', 'S', 'D']; track $index) {
+                    @for (item of ['D', 'L', 'M', 'M', 'J', 'V', 'S']; track $index) {
                         <div class="weekdays">{{ item }}</div>
                     }
                 </div>
@@ -49,6 +49,6 @@
     <!-- footer -->
     <div class="calendar-footer">
         <button class="secondary-button" (click)="cancel()">Cancelar</button>
-        <button class="primary-button" (click)="accept()">Aceptar</button>
+        <button class="primary-button" (click)="accept()" [disabled]="isDateComplete$ | async">Aceptar</button>
     </div>
 </div>

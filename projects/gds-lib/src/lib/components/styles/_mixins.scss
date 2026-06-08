@@ -12,3 +12,18 @@
     letter-spacing: $letter-spacing;
     color: $color;
 }
+
+@mixin gds-form-component(
+    $border-radius: 8px,
+    $border: 1px solid #c4c4c4,
+    $background-color: #ffffff,
+    $padding-top: 12px,
+    $padding-right: 16px,
+    $padding-bottom: 12px,
+    $padding-left: 16px
+) {
+    border-radius: $border-radius;
+    border: $border;
+    background-color: $background-color;
+    padding: $padding-top $padding-right $padding-bottom $padding-left;
+}

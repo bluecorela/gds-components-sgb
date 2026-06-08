@@ -26,13 +26,15 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { Calendar } from './components/gds-calendar/calendar/calendar';
 import { MatIcon } from "@angular/material/icon";
 import { provideHttpClient } from '@angular/common/http';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const angularMaterialComponents = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  ReactiveFormsModule
 ];
 
 const gdsComponents = [

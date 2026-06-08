@@ -1,0 +1,57 @@
+@use '../styles/mixins';
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include mixins.gds-font-nunito(
+    $font-weight: 700,
+    $font-size: 16px,
+    $line-height: 24px,
+    $letter-spacing: 0.2px,
+    $color: #3F3F3F
+  );
+  padding-left: 8px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @include mixins.gds-form-component();
+
+  &:focus-within {
+    outline: none !important;
+    border: 1px solid #00693c;;
+  }
+}
+
+.input {
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  @include mixins.gds-font-nunito(
+    $font-size: 16px,
+    $line-height: 24px,
+    $color: #3F3F3F,
+    $letter-spacing: 0.2px,
+  );
+  
+  &::placeholder {
+    @include mixins.gds-font-nunito(
+      $font-size: 16px,
+      $line-height: 24px,
+      $letter-spacing: 0.2px,
+      $color: #949494
+    );
+  }
+}

@@ -1,9 +1,32 @@
-<div>
-    <input type="text" placeholder="Haz click para desplegar..." cdkOverlayOrigin #origen="cdkOverlayOrigin"
-        (click)="isOpen = true" />
-
-    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="origen" [cdkConnectedOverlayOpen]="isOpen"
-        (overlayOutsideClick)="isOpen = false">
-        <lib-calendar></lib-calendar>
-    </ng-template>
+<div class="content">
+  <div class="title">{{ title }}</div>
+  <div 
+    class="wrapper"
+    cdkOverlayOrigin #origen="cdkOverlayOrigin" 
+    (click)="isOpen = !isOpen">
+    <input
+        type="text"
+        class="input"
+        placeholder="dd/mm/aaaa"
+        [formControl]="formController"
+        readonly />
+    <mat-icon svgIcon="calendario"></mat-icon>
+  </div>
 </div>
+
+<ng-template 
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="origen"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  (detach)="isOpen = false"
+  (backdropClick)="isOpen = false">
+  <div>
+    <lib-calendar
+        (date)="getDate($event)"
+        (exit)="cancel()"
+        >
+    </lib-calendar>
+  </div>
+</ng-template>
