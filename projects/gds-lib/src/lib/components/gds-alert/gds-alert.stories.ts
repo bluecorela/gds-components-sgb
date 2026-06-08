@@ -27,7 +27,7 @@ type Story = StoryObj<GdsAlert>;
 
 export const Default: Story = {
   args: {
-    text: 'This is an alert message.',
+    text: 'Corresponde a uno o más documentos oficiales que confirman los ingresos que percibes. Ej: Ficha de seguro o talonario.',
     placeholder: 'Enter your text alert',
     type: 'info'
   }
