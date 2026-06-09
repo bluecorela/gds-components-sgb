@@ -1,9 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+export interface RadioOption {
+  value: string;
+  label: string;
+}
 
 @Component({
   selector: 'lib-gds-radiobutton',
   templateUrl: './gds-radiobutton.html',
-  styleUrl: './gds-radiobutton.scss',
+  styleUrls: ['./gds-radiobutton.scss'],
   standalone: false
 })
-export class GdsRadiobutton {}
+export class GdsRadiobutton {
+
+  @Input() formController!: FormControl;
+
+  @Input() name = '';
+
+  @Input() title = '';
+
+  @Input() options: RadioOption[] = [
+    {
+      value: 's',
+      label: 'Sí'
+    },
+    {
+      value: 'n',
+      label: 'No'
+    }
+  ];
+}
