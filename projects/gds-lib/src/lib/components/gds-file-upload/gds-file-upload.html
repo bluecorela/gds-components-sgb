@@ -19,24 +19,16 @@
         (change)="onFileSelected($event)"
         multiple
       />
-      <label
-        class="gds-file-upload__dropzone"
-        for="file-upload-input"
-      >
-        <img
-          class="gds-file-upload__icon-image"
-          [src]="uploadIcon"
-          alt=""
-        />
+      <label class="gds-file-upload__dropzone" for="file-upload-input">
+        <mat-icon
+          class="gds-file-upload__icon"
+          [svgIcon]="uploadIcon"
+        ></mat-icon>
 
         <div class="gds-file-upload__dropzone-text">
           <div class="gds-file-upload__action">
-            <span class="gds-file-upload__action-link">
-              Presiona aquí
-            </span>
-            <span class="gds-file-upload__action-text">
-              para cargar los archivos
-            </span>
+            <span class="gds-file-upload__action-link">Presiona aquí</span>
+            <span class="gds-file-upload__action-text">para cargar los archivos</span>
           </div>
           <span class="gds-file-upload__hint">
             Formatos permitidos: PNG, JPEG, PDF.
@@ -77,11 +69,10 @@
                 (click)="onDeleteClick(i)"
                 aria-label="Eliminar archivo"
               >
-                <img
+                <mat-icon
                   class="gds-file-upload__delete-icon"
-                  src="assets/trash_file.svg"
-                  alt=""
-                />
+                  svgIcon="trash_file"
+                ></mat-icon>
               </button>
             </div>
           </div>

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export interface UploadedFile {
   file: File;
@@ -33,6 +35,17 @@ export class GdsFileUpload {
   @Output() filesChange = new EventEmitter<File[]>();
   @Output() uploadError = new EventEmitter<FileUploadError>();
   private readonly formNamePattern = /[ $@&\/()]/;
+
+  constructor(
+    domSanitizer: DomSanitizer,
+    matIconRegistry: MatIconRegistry
+  ) {
+    matIconRegistry
+    .addSvgIcon('file_upload', domSanitizer.bypassSecurityTrustResourceUrl(`assets/file_upload.svg`))
+    .addSvgIcon('file_upload_success', domSanitizer.bypassSecurityTrustResourceUrl(`assets/file_upload_success.svg`))
+    .addSvgIcon('icon_red', domSanitizer.bypassSecurityTrustResourceUrl(`assets/icon_red.svg`))
+    .addSvgIcon('trash_file', domSanitizer.bypassSecurityTrustResourceUrl(`assets/trash_file.svg`));
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -124,12 +137,12 @@ export class GdsFileUpload {
     );
 
     if (hasError) {
-      return 'assets/icon_red.svg';
+      return 'icon_red';
     }
     const hasSuccess = this.uploadedFiles.some( file => file.status === 'listo');
     if (hasSuccess) {
-      return 'assets/file_upload_success.svg';
+      return 'file_upload_success';
     }
-    return 'assets/file_upload.svg';
+    return 'file_upload';
   }
 }

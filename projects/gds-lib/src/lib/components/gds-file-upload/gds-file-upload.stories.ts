@@ -1,5 +1,6 @@
 import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { GdsFileUpload } from './gds-file-upload';
 
 const meta: Meta<GdsFileUpload> = {
@@ -8,7 +9,7 @@ const meta: Meta<GdsFileUpload> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [CommonModule]
+      imports: [CommonModule, MatIconModule]
     })
   ],
   argTypes: {
