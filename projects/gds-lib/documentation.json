@@ -14,21 +14,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+                "defaultValue": "{\n  args: {\n    formController: new FormControl('', Validators.required)\n  },\n}"
             },
             {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
+                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
             },
             {
                 "name": "Default",
@@ -59,16 +59,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    showStatus: true,\n    uploadedFiles: [\n      {\n        file: {} as File,\n        name: 'archivo.pdf',\n        size: '1.2 Mb',\n        status: 'fallido',\n      }\n    ]\n  }\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<GdsAlert>",
-                "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success'],\n    },\n    disabled: { control: 'boolean' }\n  },\n}"
             },
             {
                 "name": "meta",
@@ -127,8 +117,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GdsAlert>",
-                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "rawtype": "StoryObj<GdsCalendar>",
+                "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -138,8 +128,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GdsCalendar>",
-                "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
+                "rawtype": "StoryObj<GdsAlert>",
+                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -294,19 +284,6 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<GdsAlert>",
-                    "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts": [
                 {
                     "name": "Story",

@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { CommonModule } from "@angular/common";
 import { GdsCalendar } from "./gds-calendar";
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -40,6 +40,6 @@ type Story = StoryObj<GdsCalendar>;
 
 export const Default: Story = {
   args: {
-    formController: new FormControl('')
+    formController: new FormControl('', Validators.required)
   },
 };
