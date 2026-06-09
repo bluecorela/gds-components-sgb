@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { CommonModule } from "@angular/common";
 import { GdsCalendar } from "./gds-calendar";
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -28,7 +28,8 @@ const meta: Meta<GdsCalendar> = {
             MatInputModule,
             OverlayModule,
             MatIconModule,
-            MatButtonModule
+            MatButtonModule,
+            ReactiveFormsModule
         ]
     }),
   ],
@@ -38,5 +39,7 @@ export default meta;
 type Story = StoryObj<GdsCalendar>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    formController: new FormControl('', Validators.required)
+  },
 };

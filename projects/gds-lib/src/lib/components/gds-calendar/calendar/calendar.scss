@@ -11,7 +11,6 @@
 }
 
 .calendar {
-
     &__container {
         min-width: 300px;
         display: flex;
@@ -23,6 +22,8 @@
         padding: 24px 16px 24px 16px;
         border-radius: 8px;
         box-shadow: 0px 0px 48px 0px rgba(30, 30, 30, 0.2);
+        margin-top: 8px;
+        margin-bottom: 8px;
     }
 }
 
@@ -236,6 +237,19 @@
         $letter-spacing: 0.1px,
         $color: #00693C
     );
+    &:active {
+        background-color: #FFFFFF;
+    }
+    &:disabled {
+        border: 1px solid #F5F5F5;
+        @include mixins.gds-font-nunito(
+            $font-weight: 700,
+            $font-size: 16px,
+            $line-height: 24px,
+            $letter-spacing: 0.1px,
+            $color: #C4C4C4
+        );
+    }
 }
 
 .secondary-button {

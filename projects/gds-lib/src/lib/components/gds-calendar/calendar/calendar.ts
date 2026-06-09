@@ -1,6 +1,7 @@
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, signal, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 
 type CalendarView = 'days' | 'months' | 'years';
 
@@ -12,21 +13,45 @@ type CalendarView = 'days' | 'months' | 'years';
 })
 export class Calendar {
   @ViewChild('calendarDates') set calendarContainer(element: ElementRef<HTMLDivElement> | undefined) {
-    element ? this.renderCalendarDays(
-      this.selectedMonth ? this.selectedMonth : this.currentMonth, 
-      this.selectedYear ? this.selectedYear : this.currentYear
-    ) : this.daysController$?.abort();
-  }
-  @ViewChild('calendarYears') set calendarYears(element: ElementRef<HTMLDivElement> | undefined) {
-    element ? this.renderCalendarYears(
-      this.selectedYear ? this.selectedYear : this.currentYear
-    ) : this.yearsController$?.abort();
+    if (element) {
+      this.daysController$ = new AbortController();
+      this.renderCalendarDays(
+        this.selectedDay$.getValue() ?? this.currentDay,
+        this.selectedMonth$.getValue() ?? this.currentMonth, 
+        this.selectedYear$.getValue() ?? this.currentYear
+      );
+    } else {
+      this.daysController$?.abort();
+    }
   }
   @ViewChild('calendarMonths') set calendarMonths(element: ElementRef<HTMLDivElement> | undefined) {
-    element ? this.renderCalendarMonths() : this.monthsController$?.abort();
+    if (element) {
+      this.monthsController$ = new AbortController();
+      this.renderCalendarMonths(this.selectedYear$.getValue() as number);
+    } else {
+      this.monthsController$?.abort();
+    }
   }
+  @ViewChild('calendarYears') set calendarYears(element: ElementRef<HTMLDivElement> | undefined) {
+    if (element) {
+      this.yearsController$ = new AbortController();
+      this.renderCalendarYears(
+        this.selectedYear$.getValue() ?? this.currentYear
+      );
+    } else {
+      this.yearsController$?.abort();
+    }
+  }
+  @Output() date = new EventEmitter<any>();
+  @Output() exit = new EventEmitter<any>();
   public currentView = signal<CalendarView>('days');
   public calendarElements = signal<any[]>([]);
+
+  private selectedYear$ = new BehaviorSubject<number | null>(null);
+  private selectedMonth$ = new BehaviorSubject<number | null>(null);
+  private selectedDay$ = new BehaviorSubject<number | null>(null);
+  public isDateComplete$!: Observable<boolean>;
+
   private daysController$? :AbortController;
   private monthsController$? :AbortController;
   private yearsController$? :AbortController;
@@ -35,16 +60,13 @@ export class Calendar {
   private readonly currentYear: number = this.currentDate.getFullYear();
   private readonly currentDay: number = this.currentDate.getDate();
 
-  private selectedDay: number | null = null;
-  private selectedMonth: number | null = null;
-  private selectedYear: number | null = null;
+  private changeDayMonth?: number | null;
+  private changeDayYear?: number | null;
 
   public months: string[] = [
     'ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN',
     'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'
   ];
-
-  public isOpen: boolean = false;
 
   constructor(
     domSanitizer: DomSanitizer,
@@ -57,40 +79,65 @@ export class Calendar {
       .addSvgIcon('chevron_arriba', domSanitizer.bypassSecurityTrustResourceUrl(`assets/chevron_arriba.svg`));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isDateComplete$ = combineLatest([
+      this.selectedYear$,
+      this.selectedMonth$,
+      this.selectedDay$
+    ]).pipe(
+      map(([year, month, day]) => {
+        return !(year && (typeof month === 'number' || month) && day); 
+      })
+    );
+  }
 
-  public renderCalendarDays(month: number, year: number, render: boolean = true): void {
+  public renderCalendarDays(day: number, month: number, year: number, render: boolean = true): void {
     const calendarDays = document.getElementById('calendar-days');
     const calendarTitle = document.getElementById('calendar-title');
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     calendarDays!.innerHTML = '';
-    this.selectedMonth = month;
-    this.selectedYear = year;
-    console.log('mas ano', `${month} ${year}`)
+    if (
+      day === this.currentDay
+      && month === this.currentMonth
+      && year === this.currentYear
+    ) {
+      render && this.selectedDay$.next(day);
+    }
+    render && this.selectedMonth$.next(month);
+    render && this.selectedYear$.next(year);
+
     calendarTitle!.textContent = `${this.months[month]} ${year}`;
 
+    // carga las casillas vacias
     for (let i = 0; i < firstDay; i++) {
       const emptyCell = document.createElement('div');
       calendarDays?.appendChild(emptyCell);
     }
 
+    // carga las casillas de los dias
     for (let day = 1; day <= daysInMonth; day++) {
       const cell = document.createElement('div');
       cell.classList.add('day');
       cell.textContent = day.toString();
       cell.setAttribute('data-day', day.toString());
+
       if (
-        day === this.currentDay && month === this.currentMonth 
-        && year === this.currentYear && day !== this.selectedDay
+        day === this.currentDay 
+        && month === this.currentMonth 
+        && year === this.currentYear
       ) cell.classList.add('today');
+
       if (
-        day === this.selectedDay
-      ) cell.classList.add('selected')
+        day !== this.currentDay
+        && day === this.selectedDay$.getValue()
+        && month === this.selectedMonth$.getValue()
+        && year === this.selectedYear$.getValue()
+      ) cell.classList.add('selected');
+
       calendarDays?.appendChild(cell);
     }
-    this.daysController$ = new AbortController();
     render && (this.selectDay(), this.changeDays());
   }
 
@@ -99,12 +146,15 @@ export class Calendar {
     calendarDates?.addEventListener('click', (event) => {
       const target = event.target as HTMLElement;
       if (target.classList.contains('day')) {
-        this.selectedDay = Number(target.getAttribute('data-day'));
+        this.selectedDay$.next(Number(target.getAttribute('data-day')));
+        this.changeDayMonth && this.selectedMonth$.next(this.changeDayMonth as number);
+        this.changeDayYear && this.selectedYear$.next(this.changeDayYear as number);
         calendarDates.querySelectorAll('.day').forEach(
           (cell) => cell.classList.remove('selected')
         );
         target?.classList.add('selected');
-        // this.isOpen = false;
+        this.changeDayMonth = null;
+        this.changeDayYear = null;
       }
     }, { signal: this.daysController$?.signal });
   }
@@ -112,42 +162,46 @@ export class Calendar {
   private changeDays(): void {
     const prev = document.getElementById('prev-view');
     const next = document.getElementById('next-view');
-    let currentMonth = this.selectedMonth as number;
-    let currentYear = this.selectedYear as number;
+
+    let currentMonth = this.selectedMonth$.getValue() as number;
+    let currentYear = this.selectedYear$.getValue() as number;
+    let currentDay = this.selectedDay$.getValue() as number;
+
     prev?.addEventListener('click', () => {
-      console.log('prev');
       currentMonth--;
       currentMonth < 0 && (currentMonth = 11, currentYear--);
-      this.renderCalendarDays(currentMonth, currentYear, false);
+      this.changeDayMonth = currentMonth;
+      this.changeDayYear = currentYear;
+      this.renderCalendarDays(currentDay, currentMonth, currentYear, false);
     }, { signal: this.daysController$?.signal });
 
     next?.addEventListener('click', () => {
-      console.log('next');
       currentMonth++;
       currentMonth > 11 && (currentMonth = 0, currentYear++);
-      this.renderCalendarDays(currentMonth, currentYear, false);
+      this.changeDayMonth = currentMonth;
+      this.changeDayYear = currentYear;
+      this.renderCalendarDays(currentDay, currentMonth, currentYear, false);
     }, { signal: this.daysController$?.signal });
   }
 
   /**
    * Renderiza la vista calendario
    */
-  private renderCalendarMonths(): void {
+  private renderCalendarMonths(selectYear: number, render: boolean = true): void {
     const calendarMonths = document.getElementById('calendar-months');
     const calendarTitle = document.getElementById('calendar-title');
+    calendarMonths!.innerHTML = '';
     this.months.forEach((month, index) => {
       const cell = document.createElement('div');
       cell.classList.add('month');
       cell.setAttribute('data-month', month.toString());
       cell.setAttribute('num-month', index.toString());
-      if (index === this.currentMonth) cell.classList.add('today');
+      if (index === this.currentMonth && selectYear === this.currentYear) cell.classList.add('today');
       cell.textContent = month;
       calendarMonths?.appendChild(cell);
     });
-    calendarTitle!.textContent = `${this.selectedYear}`;
-    this.monthsController$ = new AbortController();
-    this.selectMonth();
-    this.changeMonth();
+    calendarTitle!.textContent = `${selectYear}`;
+    render && (this.selectMonth(), this.changeMonth());
   }
 
   /**
@@ -164,7 +218,8 @@ export class Calendar {
           (cell) => cell.classList.remove('selected')
         );
         target?.classList.add('selected');
-        selectedMonth && (this.selectedMonth = Number(numMonth), setTimeout(() => {
+        selectedMonth && (this.selectedMonth$.next(Number(numMonth)), setTimeout(() => {
+          this.selectedDay$.next(null);
           this.currentView.set('days');
         }, 300));
       }
@@ -174,38 +229,34 @@ export class Calendar {
   private changeMonth(): void {
     const next = document.getElementById('next-view');
     const prev = document.getElementById('prev-view');
-    const calendarTitle = document.getElementById('calendar-title');
-    let year: number = this.selectedYear as number;
+    let year: number = this.selectedYear$.getValue() as number;
 
     next?.addEventListener('click', () => {
       year = year + 1;
-      this.selectedYear = year;
-      calendarTitle!.textContent = `${this.selectedYear}`;
+      this.renderCalendarMonths(year, false);
     }, { signal: this.monthsController$?.signal });
 
     prev?.addEventListener('click', () => {
       year = year - 1;
-      this.selectedYear = year;
-      calendarTitle!.textContent = `${this.selectedYear}`;
+      this.renderCalendarMonths(year, false);
     }, { signal: this.monthsController$?.signal });
   }
 
   private renderCalendarYears(year: number, render: boolean = true): void {
     const calendarYears = document.getElementById('calendar-years');
     calendarYears!.innerHTML = '';
-    render && (this.selectedYear = year);
+    render && (this.selectedYear$.next(year));
     const startYear = Math.floor(year / 24) * 24;
     for (let y = 0; y < 24; y++) {
       const cell = document.createElement('div');
       cell.classList.add('year');
       cell.setAttribute('data-year', (startYear + y).toString());
       cell.textContent = (startYear + y).toString();
-      if (y === year) cell.classList.add('today');
+      if ((startYear + y) === this.currentYear) cell.classList.add('today');
       calendarYears?.appendChild(cell)
     }
     const monthYear = document.getElementById('calendar-title');
     monthYear!.textContent = `${startYear} - ${startYear + 24}`;
-    this.yearsController$ = new AbortController();
     render && (this.selectYear(), this.changeYear());
   }
 
@@ -215,12 +266,11 @@ export class Calendar {
       const target = event.target as HTMLElement;
       if (target.classList.contains('year')) {
         const selectedYear = target.getAttribute('data-year');
-        console.log('year', selectedYear);
         calendarYears.querySelectorAll('.year').forEach(
           (cell) => cell.classList.remove('selected')
         );
         target?.classList.add('selected');
-        selectedYear && (this.selectedYear = Number(selectedYear), setTimeout(() => {
+        selectedYear && (this.selectedYear$.next(Number(selectedYear)), setTimeout(() => {
           this.currentView.set('months');
         }, 300));
       }
@@ -230,7 +280,7 @@ export class Calendar {
   private changeYear(): void {
     const next = document.getElementById('next-view');
     const prev = document.getElementById('prev-view');
-    let currentYear: number = this.selectedYear as number;
+    let currentYear: number = this.selectedYear$.getValue() as number;
 
     next?.addEventListener('click', () => {
       currentYear = currentYear + 24;
@@ -244,12 +294,14 @@ export class Calendar {
   }
 
   public accept(): void {
-    const date = `${this.selectedDay} ${this.selectedMonth} ${this.selectedYear}`;
-    console.log('date', date);
+    const year: number = this.selectedYear$.getValue() as number;
+    const month: number = this.selectedMonth$.getValue() as number;
+    const day: number = this.selectedDay$.getValue() as number;
+    const date = new Date(year, month, day);
+    this.date.emit(date);
   }
 
   public cancel(): void {
-    console.log('cancel');
+    this.exit.emit();
   }
-
 }
