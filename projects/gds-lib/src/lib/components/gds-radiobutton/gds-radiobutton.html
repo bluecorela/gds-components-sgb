@@ -1,1 +1,25 @@
-<p>gds-radiobutton works!</p>
+<div class="radio-group">
+  <div *ngIf="title" class="radio-group__title">
+    {{ title }}
+  </div>
+  <div class="radio-group__content">
+    <label
+      class="radio"
+      *ngFor="let option of options"
+    >
+      <div class="radio-group__wrapper">
+        <input
+          type="radio"
+          class="input-radio"
+          [value]="option.value"
+          [formControl]="formController"
+          [name]="name"
+        />
+        <span class="checkmark"></span>
+      </div>
+      <span class="radio__label">
+        {{ option.label }}
+      </span>
+    </label>
+  </div>
+</div>

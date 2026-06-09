@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { GdsInput } from './components/gds-input/gds-input';
 import { GdsAlert } from './components/gds-alert/gds-alert';
 import { GdsCalendar } from './components/gds-calendar/gds-calendar';
@@ -68,6 +69,7 @@ const gdsInputComponent = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     OverlayModule,
     angularMaterialComponents
     ,
