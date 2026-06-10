@@ -1,1 +1,21 @@
-<p>gds-header works!</p>
+<ng-template #normalHeader>
+    <div class="wrapper">
+        <mat-icon class="icon" svgIcon="atras" (click)="onBack()"></mat-icon>
+        <mat-icon class="logo" svgIcon="logo-sgb"></mat-icon>
+        <mat-icon class="icon" svgIcon="cerrar" (click)="onExit()"></mat-icon>
+    </div>
+</ng-template>
+
+<header class="content">
+    @if (type === 'NORMAL') {
+        <ng-container *ngTemplateOutlet="normalHeader"></ng-container>
+    } @else if (type === 'STEPPER') {
+        <ng-container *ngTemplateOutlet="normalHeader"></ng-container>
+        <div #stepper>STEPPER</div>
+    } @else if (type === 'NUMBERS') {
+        <ng-container *ngTemplateOutlet="normalHeader"></ng-container>
+        <div #number>NUMBER</div>
+    } @else {
+        Selecciona un tipo
+    }
+</header>
