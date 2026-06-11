@@ -1,6 +1,49 @@
-<div class="alert__content">
-  <div class="alert__wrapper">
-    <!-- <mat-icon class="icon" svg="home"></mat-icon> -->
-    <div class="text" id="wrapper-text">{{ text }}</div>
+<div
+  class="alert"
+  [ngClass]="{
+    'alert--info': type === 'info',
+    'alert--success': type === 'success',
+    'alert--error': type === 'error',
+    'alert--neutral': type === 'neutral',
+    'alert--has-amount': amount
+  }"
+>
+  <div class="alert__content">
+    <div class="alert__wrapper">
+
+      <div
+        *ngIf="showIcon && type !== 'neutral'"
+        class="alert__icon"
+      >
+        <mat-icon
+          class="gds-alert-info-icon"
+          [svgIcon]="iconName"
+        ></mat-icon>
+      </div>
+
+      <div class="alert__body">
+
+        <div
+          *ngIf="title"
+          class="alert__title"
+        >
+          {{ title }}
+        </div>
+
+        <div class="alert__text">
+          {{ text }}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      *ngIf="amount"
+      class="alert__amount"
+    >
+      {{ amount }}
+    </div>
+
   </div>
 </div>

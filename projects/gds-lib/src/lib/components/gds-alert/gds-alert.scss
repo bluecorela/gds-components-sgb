@@ -1,51 +1,117 @@
 @use '../styles/mixins';
 
 .alert {
-    &__content {
-        padding: 12px;
-        border-radius: 8px;
-        background-color: #F5F5F5;
-        
-    }
-    &__wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-self: center;
-        padding-left: 8px;
-        gap: 8px;
-        position: relative;
-        ::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 2px;
-            background-color: #0F4DBC;
-            border-radius: 2px;
-        }
-    }
-}
+  display: flex;
+  justify-content: center;
+  width: 100%;
 
-.line {
-    height: 50px;
-    &__info {
-        border-left: 2px solid #0F4DBC;
-    }
-}
+  &__content {
+    width: 328px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #F5F5F5;
+    box-sizing: border-box;
+  }
 
-.icon {
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding-left: 10px;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+
+      width: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  &__icon {
     width: 24px;
     height: 24px;
-    align-self: flex-start;
     flex-shrink: 0;
-}
+  }
 
-.text {
-  @include mixins.gds-font-nunito(
-    $font-size: 14px,
-    $line-height: 21px,
-    $color: #3F3F3F
-  );
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__title {
+    @include mixins.gds-font-nunito(
+      $font-weight: 700,
+      $font-size: 14px,
+      $line-height: 21px,
+      $color: #1E1E1E
+    );
+  }
+
+  &__text {
+    @include mixins.gds-font-nunito(
+      $font-weight: 400,
+      $font-size: 14px,
+      $line-height: 21px,
+      $letter-spacing: 0.1px,
+      $color: #3F3F3F
+    );
+  }
+
+  &__amount {
+    margin-top: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    @include mixins.gds-font-nunito(
+      $font-weight: 700,
+      $font-size: 24px,
+      $line-height: 36px,
+      $letter-spacing: 0.2px,
+      $color: #00693C
+    );
+  }
+
+  &--info {
+    .alert__wrapper::before {
+      background-color: #0F4DBC;
+    }
+  }
+
+  &--success {
+    .alert__wrapper::before {
+      background-color: #0F804F;
+    }
+  }
+
+  &--error {
+    .alert__wrapper::before {
+      background-color: #C30000;
+    }
+  }
+
+  &--neutral {
+    .alert__wrapper {
+      padding-left: 0;
+    }
+
+    .alert__wrapper::before {
+      display: none;
+    }
+
+    .alert__content {
+      padding: 16px;
+    }
+  }
 }
