@@ -36,7 +36,8 @@ type Story = StoryObj<GdsAlert>;
 export const Showcase: Story = {
   render: () => ({
     template: `
-      <div style="display:flex; flex-direction:column; gap:16px; max-width:600px;">
+      <div
+      style="display:flex; flex-direction:column; gap:16px; width:100%; max-width:600px; margin:0 auto; ">
         <lib-gds-alert
           type="info"
           title="Domicilio en Panamá"
