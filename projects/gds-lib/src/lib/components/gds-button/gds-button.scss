@@ -1,0 +1,70 @@
+@use '../styles/mixins';
+
+$sgb-color-primary: #00693C;
+$sgb-color-white: #FFFFFF;
+$sgb-color-disabled-bg: #F5F5F5;
+$sgb-color-disabled-text: #C4C4C4;
+$sgb-color-outline-disabled: #CCCCCC;
+
+.gds-button {
+  width: 328px;
+  max-width: 100%;
+  height: 48px;
+
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  background-color: $sgb-color-primary;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  @include mixins.gds-font-nunito(
+    $font-weight: 700,
+    $font-size: 16px,
+    $line-height: 24px,
+    $letter-spacing: 0.2px,
+    $color: $sgb-color-white
+  );
+
+  &:focus-visible {
+    outline: 2px solid $sgb-color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background: $sgb-color-disabled-bg;
+    color: $sgb-color-disabled-text;
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+}
+
+.gds-button__text {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gds-button--outline {
+  background: transparent;
+  border: 1.5px solid $sgb-color-primary;
+  color: $sgb-color-primary;
+
+  &:disabled {
+    background: $sgb-color-white;
+    border-color: $sgb-color-disabled-text;
+    color: $sgb-color-outline-disabled;
+  }
+
+}
+

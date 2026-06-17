@@ -20,6 +20,7 @@ import { GdsOtp } from './components/gds-otp/gds-otp';
 import { GdsSadpath } from './components/gds-sadpath/gds-sadpath';
 import { GdsSelect } from './components/gds-select/gds-select';
 import { GdsShowdocument } from './components/gds-showdocument/gds-showdocument';
+import { GdsButton } from './components/gds-button/gds-button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_DATE_LOCALE, MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
@@ -44,6 +45,7 @@ const gdsComponents = [
   GdsCalendar,
   GdsBullets,
   GdsFileUpload,
+  GdsButton,
   GdsHeader,
   GdsFooter,
   GdsShowdocument,
