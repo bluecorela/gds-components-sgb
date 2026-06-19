@@ -43,7 +43,7 @@ export class GdsFileUpload {
     matIconRegistry
     .addSvgIcon('file_upload', domSanitizer.bypassSecurityTrustResourceUrl(`assets/file_upload.svg`))
     .addSvgIcon('file_upload_success', domSanitizer.bypassSecurityTrustResourceUrl(`assets/file_upload_success.svg`))
-    .addSvgIcon('icon_red', domSanitizer.bypassSecurityTrustResourceUrl(`assets/icon_red.svg`))
+    .addSvgIcon('info_red', domSanitizer.bypassSecurityTrustResourceUrl(`assets/info_red.svg`))
     .addSvgIcon('trash_file', domSanitizer.bypassSecurityTrustResourceUrl(`assets/trash_file.svg`));
   }
 
@@ -137,7 +137,7 @@ export class GdsFileUpload {
     );
 
     if (hasError) {
-      return 'icon_red';
+      return 'info_red';
     }
     const hasSuccess = this.uploadedFiles.some( file => file.status === 'listo');
     if (hasSuccess) {
