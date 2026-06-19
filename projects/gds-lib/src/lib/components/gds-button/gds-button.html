@@ -1,0 +1,11 @@
+<button
+  class="gds-button"
+  [class.gds-button--outline]="variant === 'outline'"
+  [disabled]="disabled"
+  [attr.type]="type"
+  (click)="onClick($event)"
+>
+  <span class="gds-button__text">
+    {{ label }}
+  </span>
+</button>
