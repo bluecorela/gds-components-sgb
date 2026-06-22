@@ -1,4 +1,4 @@
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { moduleMetadata, applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { CommonModule } from "@angular/common";
 import { GdsCalendar } from "./gds-calendar";
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,6 +9,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { Calendar } from './calendar/calendar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { provideHttpClient } from '@angular/common/http';
 
 const meta: Meta<GdsCalendar> = {
   title: 'GDS Components/GdsCalendar',
@@ -31,6 +32,11 @@ const meta: Meta<GdsCalendar> = {
             MatButtonModule,
             ReactiveFormsModule
         ]
+    }),
+    applicationConfig({
+      providers: [
+        provideHttpClient(),
+      ],
     }),
   ],
 };

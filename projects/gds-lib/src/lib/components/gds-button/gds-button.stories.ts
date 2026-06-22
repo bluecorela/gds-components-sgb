@@ -13,7 +13,7 @@ const meta: Meta<GdsButton> = {
     }),
   ],
   argTypes: {
-    type: {
+    variant: {
       control: 'select',
       options: ['primary', 'outline'],
     },
@@ -25,6 +25,14 @@ export default meta;
 type Story = StoryObj<GdsButton>;
 
 export const Default: Story = {
+  args: {
+    label: 'Continuar',
+    variant: 'primary',
+    disabled: false,
+  }
+};
+
+export const Showcase: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center;">

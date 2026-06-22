@@ -1,7 +1,8 @@
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { moduleMetadata, applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import { GdsAlert } from './gds-alert';
 import { MatIconModule } from '@angular/material/icon';
+import { provideHttpClient } from '@angular/common/http';
 
 const meta: Meta<GdsAlert> = {
   title: 'GDS Components/GdsAlert',
@@ -11,6 +12,11 @@ const meta: Meta<GdsAlert> = {
     moduleMetadata({
       declarations: [GdsAlert],
       imports: [CommonModule, MatIconModule],
+    }),
+    applicationConfig({
+      providers: [
+        provideHttpClient(),
+      ],
     }),
   ],
   argTypes: {
@@ -24,6 +30,9 @@ const meta: Meta<GdsAlert> = {
     text: {
       control: 'text'
     },
+    amount: {
+      control: 'text'
+    },
     showIcon: {
       control: 'boolean'
     }
@@ -32,6 +41,16 @@ const meta: Meta<GdsAlert> = {
 
 export default meta;
 type Story = StoryObj<GdsAlert>;
+
+export const Default: Story = {
+  args: {
+    type: 'info',
+    title: 'Domicilio en Panamá',
+    text: 'Estar legalmente establecido en Panamá para el cumplimiento de tus obligaciones y el ejercicio de tus derechos.',
+    amount: '',
+    showIcon: true,
+  },
+};
 
 export const Showcase: Story = {
   render: () => ({

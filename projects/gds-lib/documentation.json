@@ -18,7 +18,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+                "defaultValue": "{\n  args: {\n    type: 'info',\n    title: 'Domicilio en Panamá',\n    text: 'Estar legalmente establecido en Panamá para el cumplimiento de tus obligaciones y el ejercicio de tus derechos.',\n    amount: '',\n    showIcon: true,\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
             },
             {
                 "name": "Default",
@@ -34,6 +44,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    label: 'Continuar',\n    variant: 'primary',\n    disabled: false,\n  }\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -44,11 +64,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                "file": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{}"
+                "defaultValue": "{\n  args: {\n    type: 'NORMAL',\n  },\n}"
             },
             {
                 "name": "Default",
@@ -98,27 +118,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GdsAlert>",
-                "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success'],\n    },\n    disabled: { control: 'boolean' }\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<GdsFileUpload>",
-                "defaultValue": "{\n  title: 'GDS Components/GdsFileUpload',\n  component: GdsFileUpload,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule]\n    })\n  ],\n  argTypes: {\n    title: {\n      control: 'text'\n    },\n    body: {\n      control: 'text'\n    },\n    maxFiles: {\n      control: 'number'\n    },\n    maxFileSize: {\n      control: 'number'\n    },\n    acceptedFileTypes: {\n      control: 'text'\n    },\n    showStatus: {\n      control: 'boolean'\n    }\n  }\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<GdsCalendar>",
-                "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule,\n            ReactiveFormsModule\n        ]\n    }),\n  ],\n}"
+                "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, MatIconModule],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success', 'neutral']\n    },\n    title: {\n      control: 'text'\n    },\n    text: {\n      control: 'text'\n    },\n    amount: {\n      control: 'text'\n    },\n    showIcon: {\n      control: 'boolean'\n    }\n  }\n}"
             },
             {
                 "name": "meta",
@@ -129,6 +129,46 @@
                 "deprecationMessage": "",
                 "type": "Meta<GdsFooter>",
                 "defaultValue": "{\n  title: 'GDS Components/GdsFooter',\n  component: GdsFooter,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsFooter],\n      imports: [\n        CommonModule,\n        MatIconModule,\n      ],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsFileUpload>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsFileUpload',\n  component: GdsFileUpload,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, MatIconModule]\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n  argTypes: {\n    title: {\n      control: 'text'\n    },\n    body: {\n      control: 'text'\n    },\n    maxFiles: {\n      control: 'number'\n    },\n    maxFileSize: {\n      control: 'number'\n    },\n    acceptedFileTypes: {\n      control: 'text'\n    },\n    showStatus: {\n      control: 'boolean'\n    }\n  }\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsButton>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsButton',\n  component: GdsButton,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsButton],\n      imports: [CommonModule],\n    }),\n  ],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['primary', 'outline'],\n    },\n    disabled: { control: 'boolean' },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsCalendar>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule,\n            ReactiveFormsModule\n        ]\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GdsHeader>",
+                "defaultValue": "{\n  title: 'GDS Components/GdsHeader',\n  component: GdsHeader,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsHeader],\n      imports: [\n        CommonModule,\n        MatIconModule,\n      ],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['NORMAL', 'STEPPER', 'NUMBERS'],\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -171,6 +211,26 @@
                 "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      formController: new FormControl('s')\n    }\n  }),\n  args: {\n    title: '¿Eres residente permanente con domicilio en Panamá?',\n    name: 'resident',\n    options: [\n      {\n        value: 's',\n        label: 'Sí'\n      },\n      {\n        value: 'n',\n        label: 'No'\n      }\n    ]\n  }\n}"
             },
             {
+                "name": "Showcase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div\n      style=\"display:flex; flex-direction:column; gap:16px; width:100%; max-width:600px; margin:0 auto; \">\n        <lib-gds-alert\n          type=\"info\"\n          title=\"Domicilio en Panamá\"\n          text=\"Estar legalmente establecido en Panamá para el cumplimiento de tus obligaciones y el ejercicio de tus derechos.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"info\"\n          title=\"Evidencia de ingresos\"\n          text=\"Corresponde a uno o más documentos oficiales que confirman los ingresos que percibes. Ej: Ficha de seguro o talonario.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"info\"\n          text=\"Asegúrate que las fechas sean correctas y reflejen tu historial laboral.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"error\"\n          text=\"Código ingresado es incorrecto. Te quedan solo 2 intentos.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"success\"\n          text=\"Reenviamos el código con éxito.\">\n        </lib-gds-alert>\n        <lib-gds-alert\n          type=\"neutral\"\n          text=\"Cuota mensual aproximada\">\n        </lib-gds-alert>\n        <lib-gds-alert\n          type=\"neutral\"\n          text=\"Cuota mensual aproximada\"\n          amount=\"$ 300.00\">\n        </lib-gds-alert>\n      </div>\n    `\n  })\n}"
+            },
+            {
+                "name": "Showcase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center;\">\n        <lib-gds-button label=\"Continuar\" variant=\"primary\"></lib-gds-button>\n        <lib-gds-button label=\"Verificar disponibilidad\" variant=\"outline\"></lib-gds-button>\n        <lib-gds-button label=\"Verificar disponibilidad\" variant=\"outline\" [disabled]=\"true\"></lib-gds-button>\n        <lib-gds-button label=\"Continuar\" variant=\"primary\" [disabled]=\"true\"></lib-gds-button>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
                 "name": "SuccessFile",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -198,8 +258,30 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<GdsFooter>",
+                "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<GdsFileUpload>",
                 "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GdsButton>",
+                "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -220,8 +302,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GdsFooter>",
-                "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                "rawtype": "StoryObj<GdsHeader>",
+                "file": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -261,7 +343,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    text: 'This is an alert message.',\n    placeholder: 'Enter your text alert',\n    type: 'info'\n  }\n}"
+                    "defaultValue": "{\n  args: {\n    type: 'info',\n    title: 'Domicilio en Panamá',\n    text: 'Estar legalmente establecido en Panamá para el cumplimiento de tus obligaciones y el ejercicio de tus derechos.',\n    amount: '',\n    showIcon: true,\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -271,7 +353,39 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GdsAlert>",
-                    "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, FormsModule],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success'],\n    },\n    disabled: { control: 'boolean' }\n  },\n}"
+                    "defaultValue": "{\n  title: 'GDS Components/GdsAlert',\n  component: GdsAlert,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsAlert],\n      imports: [CommonModule, MatIconModule],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['info', 'error', 'success', 'neutral']\n    },\n    title: {\n      control: 'text'\n    },\n    text: {\n      control: 'text'\n    },\n    amount: {\n      control: 'text'\n    },\n    showIcon: {\n      control: 'boolean'\n    }\n  }\n}"
+                },
+                {
+                    "name": "Showcase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div\n      style=\"display:flex; flex-direction:column; gap:16px; width:100%; max-width:600px; margin:0 auto; \">\n        <lib-gds-alert\n          type=\"info\"\n          title=\"Domicilio en Panamá\"\n          text=\"Estar legalmente establecido en Panamá para el cumplimiento de tus obligaciones y el ejercicio de tus derechos.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"info\"\n          title=\"Evidencia de ingresos\"\n          text=\"Corresponde a uno o más documentos oficiales que confirman los ingresos que percibes. Ej: Ficha de seguro o talonario.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"info\"\n          text=\"Asegúrate que las fechas sean correctas y reflejen tu historial laboral.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"error\"\n          text=\"Código ingresado es incorrecto. Te quedan solo 2 intentos.\">\n        </lib-gds-alert>\n\n        <lib-gds-alert\n          type=\"success\"\n          text=\"Reenviamos el código con éxito.\">\n        </lib-gds-alert>\n        <lib-gds-alert\n          type=\"neutral\"\n          text=\"Cuota mensual aproximada\">\n        </lib-gds-alert>\n        <lib-gds-alert\n          type=\"neutral\"\n          text=\"Cuota mensual aproximada\"\n          amount=\"$ 300.00\">\n        </lib-gds-alert>\n      </div>\n    `\n  })\n}"
+                }
+            ],
+            "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GdsFooter>",
+                    "defaultValue": "{\n  title: 'GDS Components/GdsFooter',\n  component: GdsFooter,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsFooter],\n      imports: [\n        CommonModule,\n        MatIconModule,\n      ],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n}"
                 }
             ],
             "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts": [
@@ -303,7 +417,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GdsFileUpload>",
-                    "defaultValue": "{\n  title: 'GDS Components/GdsFileUpload',\n  component: GdsFileUpload,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule]\n    })\n  ],\n  argTypes: {\n    title: {\n      control: 'text'\n    },\n    body: {\n      control: 'text'\n    },\n    maxFiles: {\n      control: 'number'\n    },\n    maxFileSize: {\n      control: 'number'\n    },\n    acceptedFileTypes: {\n      control: 'text'\n    },\n    showStatus: {\n      control: 'boolean'\n    }\n  }\n}"
+                    "defaultValue": "{\n  title: 'GDS Components/GdsFileUpload',\n  component: GdsFileUpload,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, MatIconModule]\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n  argTypes: {\n    title: {\n      control: 'text'\n    },\n    body: {\n      control: 'text'\n    },\n    maxFiles: {\n      control: 'number'\n    },\n    maxFileSize: {\n      control: 'number'\n    },\n    acceptedFileTypes: {\n      control: 'text'\n    },\n    showStatus: {\n      control: 'boolean'\n    }\n  }\n}"
                 },
                 {
                     "name": "SuccessFile",
@@ -314,6 +428,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    title: 'Ingresa los documentos:',\n    body: 'Identificación requerida. Puedes adjuntar la evidencia de ingresos y la proforma del inmueble de forma opcional para agilizar la evaluación.',\n    showStatus: true,\n    uploadedFiles: [\n      {\n        file: {} as File,\n        name: 'archivo.pdf',\n        size: '1.2 Mb',\n        status: 'listo'\n      }\n    ]\n  }\n}"
+                }
+            ],
+            "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Continuar',\n    variant: 'primary',\n    disabled: false,\n  }\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GdsButton>",
+                    "defaultValue": "{\n  title: 'GDS Components/GdsButton',\n  component: GdsButton,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsButton],\n      imports: [CommonModule],\n    }),\n  ],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['primary', 'outline'],\n    },\n    disabled: { control: 'boolean' },\n  },\n}"
+                },
+                {
+                    "name": "Showcase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div style=\"display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center;\">\n        <lib-gds-button label=\"Continuar\" variant=\"primary\"></lib-gds-button>\n        <lib-gds-button label=\"Verificar disponibilidad\" variant=\"outline\"></lib-gds-button>\n        <lib-gds-button label=\"Verificar disponibilidad\" variant=\"outline\" [disabled]=\"true\"></lib-gds-button>\n        <lib-gds-button label=\"Continuar\" variant=\"primary\" [disabled]=\"true\"></lib-gds-button>\n      </div>\n    `,\n  }),\n}"
                 }
             ],
             "projects/gds-lib/src/lib/components/gds-calendar/gds-calendar.stories.ts": [
@@ -335,29 +481,29 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GdsCalendar>",
-                    "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule,\n            ReactiveFormsModule\n        ]\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  title: 'GDS Components/GdsCalendar',\n  component: GdsCalendar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n        declarations: [\n            GdsCalendar,\n            Calendar\n        ],\n        imports: [\n            CommonModule,\n            FormsModule,\n            MatDatepickerModule,\n            MatNativeDateModule,\n            MatInputModule,\n            OverlayModule,\n            MatIconModule,\n            MatButtonModule,\n            ReactiveFormsModule\n        ]\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n}"
                 }
             ],
-            "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts": [
+            "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                    "file": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{}"
+                    "defaultValue": "{\n  args: {\n    type: 'NORMAL',\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                    "file": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<GdsFooter>",
-                    "defaultValue": "{\n  title: 'GDS Components/GdsFooter',\n  component: GdsFooter,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsFooter],\n      imports: [\n        CommonModule,\n        MatIconModule,\n      ],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n}"
+                    "type": "Meta<GdsHeader>",
+                    "defaultValue": "{\n  title: 'GDS Components/GdsHeader',\n  component: GdsHeader,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      declarations: [GdsHeader],\n      imports: [\n        CommonModule,\n        MatIconModule,\n      ],\n    }),\n    applicationConfig({\n      providers: [\n        provideHttpClient(),\n      ],\n    }),\n  ],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: ['NORMAL', 'STEPPER', 'NUMBERS'],\n    },\n  },\n}"
                 }
             ],
             "projects/gds-lib/src/lib/components/gds-input/gds-input.stories.ts": [
@@ -453,6 +599,19 @@
                     "kind": 184
                 }
             ],
+            "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GdsFooter>",
+                    "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts": [
                 {
                     "name": "Story",
@@ -460,6 +619,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GdsFileUpload>",
                     "file": "projects/gds-lib/src/lib/components/gds-file-upload/gds-file-upload.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GdsButton>",
+                    "file": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -479,13 +651,13 @@
                     "kind": 184
                 }
             ],
-            "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts": [
+            "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<GdsFooter>",
-                    "file": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                    "rawtype": "StoryObj<GdsHeader>",
+                    "file": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -561,6 +733,56 @@
             },
             {
                 "filePath": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Showcase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-alert/gds-alert.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Showcase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-button/gds-button.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -671,6 +893,36 @@
             },
             {
                 "filePath": "projects/gds-lib/src/lib/components/gds-footer/gds-footer.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/gds-lib/src/lib/components/gds-header/gds-header.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

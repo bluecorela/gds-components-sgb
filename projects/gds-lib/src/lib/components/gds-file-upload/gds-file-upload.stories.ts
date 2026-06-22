@@ -1,7 +1,8 @@
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { GdsFileUpload } from './gds-file-upload';
+import { provideHttpClient } from '@angular/common/http';
 
 const meta: Meta<GdsFileUpload> = {
   title: 'GDS Components/GdsFileUpload',
@@ -10,7 +11,12 @@ const meta: Meta<GdsFileUpload> = {
   decorators: [
     moduleMetadata({
       imports: [CommonModule, MatIconModule]
-    })
+    }),
+    applicationConfig({
+      providers: [
+        provideHttpClient(),
+      ],
+    }),
   ],
   argTypes: {
     title: {
