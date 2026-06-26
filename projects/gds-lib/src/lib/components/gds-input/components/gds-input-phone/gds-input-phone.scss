@@ -1,0 +1,126 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.gds-input-phone {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    padding-left: 8px;
+    margin-bottom: 4px;
+    @include gds-font-nunito($font-weight: 700, $font-size: 16px, $line-height: 24px, $color: #3f3f3f);
+  }
+
+  // ── Modo área + número ────────────────────────────────────────────────────
+
+  &__row {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__prefix-field {
+    width: 80px;
+    flex-shrink: 0;
+    @include gds-form-component();
+    @include gds-font-nunito($font-size: 16px, $line-height: 24px);
+    outline: none;
+
+    &::placeholder {
+      color: #949494;
+    }
+
+    &:focus {
+      border-color: #00693c;
+    }
+
+    &--error {
+      border-color: var(--gds-error-color, #c30000) !important;
+    }
+  }
+
+  &__number-field {
+    flex: 1;
+    @include gds-form-component();
+    @include gds-font-nunito($font-size: 16px, $line-height: 24px);
+    outline: none;
+
+    &::placeholder {
+      color: #949494;
+    }
+
+    &:focus {
+      border-color: #00693c;
+    }
+
+    &--error {
+      border-color: var(--gds-error-color, #c30000) !important;
+    }
+  }
+
+  // ── Modo simple (con o sin código de país estático) ───────────────────────
+
+  &__simple {
+    position: relative;
+    display: flex;
+    align-items: center;
+    @include gds-form-component($padding-left: 16px, $padding-right: 16px);
+    border: 1px solid #c4c4c4;
+
+    &:focus-within {
+      border-color: #00693c;
+    }
+
+    &--error {
+      border-color: var(--gds-error-color, #c30000) !important;
+    }
+  }
+
+  &__country-code {
+    @include gds-font-nunito($font-size: 16px, $line-height: 24px, $color: #3f3f3f);
+    flex-shrink: 0;
+    margin-right: 4px;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__field {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    @include gds-font-nunito($font-size: 16px, $line-height: 24px);
+
+    &::placeholder {
+      color: #949494;
+    }
+  }
+
+  // ── Mensajes ──────────────────────────────────────────────────────────────
+
+  &__error {
+    padding-left: 16px;
+    padding-top: 4px;
+    @include gds-font-nunito(
+      $font-weight: 700,
+      $font-size: 12px,
+      $line-height: 18px,
+      $letter-spacing: 0.1px,
+      $color: #c30000
+    );
+  }
+
+  &__subtitle {
+    padding-left: 16px;
+    padding-top: 4px;
+    @include gds-font-nunito(
+      $font-weight: 700,
+      $font-size: 12px,
+      $line-height: 18px,
+      $letter-spacing: 0.1px,
+      $color: #949494
+    );
+  }
+}

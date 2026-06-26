@@ -1,1 +1,25 @@
-<p>gds-input-money works!</p>
+<div class="gds-input-money" [style.--gds-error-color]="errorColor">
+  @if (title) {
+    <div class="gds-input-money__title">{{ title }}</div>
+  }
+
+  <div class="gds-input-money__wrapper" [class.gds-input-money__wrapper--error]="validateError()">
+    <span class="gds-input-money__symbol">$</span>
+    <input
+      type="text"
+      class="gds-input-money__field"
+      [placeholder]="placeholder"
+      autocomplete="off"
+      inputmode="numeric"
+      [formControl]="formController"
+      (input)="onMoneyInput($event)"
+    />
+    <span class="gds-input-money__currency">USD</span>
+  </div>
+
+  @if (showErrors && errorMessage) {
+    <div class="gds-input-money__error" [style.color]="errorColor">{{ errorMessage }}</div>
+  } @else if (subtitle) {
+    <div class="gds-input-money__subtitle">{{ subtitle }}</div>
+  }
+</div>

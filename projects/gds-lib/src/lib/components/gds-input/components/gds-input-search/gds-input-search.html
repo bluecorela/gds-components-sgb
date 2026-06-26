@@ -1,1 +1,35 @@
-<p>gds-input-search works!</p>
+<div class="gds-search-wrapper">
+  <mat-icon
+    class="gds-search-icon"
+    [svgIcon]="currentValue ? 'lupa_verde' : 'lupa'">
+  </mat-icon>
+
+  <input
+    type="text"
+    class="gds-search-input"
+    placeholder="Buscar"
+    autocomplete="off"
+    [value]="currentValue"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (mousedown)="$event.stopPropagation()"
+  />
+
+  @if (showVoice) {
+    <mat-icon
+      class="gds-search-icon gds-search-icon--action"
+      [svgIcon]="isListening || currentValue ? 'microfono_verde' : 'microfono'"
+      (mousedown)="$event.stopPropagation()"
+      (click)="$event.stopPropagation(); startVoiceSearch()">
+    </mat-icon>
+  }
+
+  @if (currentValue) {
+    <mat-icon
+      class="gds-search-icon gds-search-icon--action"
+      svgIcon="cerrar"
+      (mousedown)="$event.stopPropagation()"
+      (click)="$event.stopPropagation(); clear()">
+    </mat-icon>
+  }
+</div>

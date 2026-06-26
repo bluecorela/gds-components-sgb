@@ -1,1 +1,15 @@
-<p>gds-loader works!</p>
+@if (type === 'fullscreen') {
+  <div class="loader-fullscreen">
+    <div class="loader-fullscreen__content">
+      <img [src]="gifSrc" class="loader-fullscreen__img" alt="Cargando..." />
+      <div class="loader-fullscreen__text">
+        <div class="loader-fullscreen__title">Un momento, por favor</div>
+        <div class="loader-fullscreen__subtitle">{{ subtitle }}</div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="loader-spinner">
+    <img [src]="gifSrc" class="loader-spinner__img" alt="Cargando..." />
+  </div>
+}

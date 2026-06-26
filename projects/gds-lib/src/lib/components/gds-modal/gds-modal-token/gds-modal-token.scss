@@ -1,0 +1,76 @@
+@use '../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.token {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+
+  &__title {
+    text-align: center;
+    @include gds-font-nunito($font-weight: 700, $font-size: 22px, $line-height: 27px, $color: #00693c);
+  }
+
+  &__otp {
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  &__counter {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__text {
+    text-align: center;
+    @include gds-font-nunito($color: #5d5d5d, $font-size: 16px, $line-height: 24px);
+  }
+
+  &__time {
+    text-align: center;
+    @include gds-font-nunito($font-size: 20px, $font-weight: 700, $line-height: 25px);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  &__button {
+    min-height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background-color: #00693c;
+    cursor: pointer;
+    @include gds-font-nunito($color: #ffffff, $font-weight: 700, $font-size: 16px, $line-height: 24px);
+
+    &:disabled {
+      background-color: #f5f5f5;
+      cursor: not-allowed;
+      @include gds-font-nunito($color: #c4c4c4, $font-weight: 700, $font-size: 16px, $line-height: 24px);
+    }
+  }
+
+  &__button-outline {
+    height: 48px;
+    width: 100%;
+    border-radius: 8px;
+    background: transparent;
+    border: 1.5px solid #00693c;
+    cursor: pointer;
+    @include gds-font-nunito($color: #00693c, $font-weight: 700, $font-size: 16px, $line-height: 24px);
+  }
+}
+
+.time-normal  { color: #00693c; }
+.time-warning { color: #f57c00; }
+.time-danger  { color: #d32f2f; }

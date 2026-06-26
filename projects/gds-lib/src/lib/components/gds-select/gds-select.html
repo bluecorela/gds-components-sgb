@@ -1,1 +1,45 @@
-<p>gds-select works!</p>
+<mat-form-field
+  class="gds-select-field"
+  [class.gds-select-open]="isOpen"
+  appearance="outline"
+  subscriptSizing="dynamic"
+>
+  <mat-select
+    [formControl]="formController"
+    [placeholder]="placeholder"
+    panelClass="gds-select-panel"
+    (openedChange)="onPanelToggle($event)"
+    (selectionChange)="onSelectionChange()"
+  >
+    @if (enableSearch) {
+      <mat-option class="gds-select-search-option" disabled>
+        <div
+          (click)="$event.stopPropagation()"
+          (mousedown)="$event.stopPropagation()"
+        >
+          <lib-gds-input-search
+            [value]="currentSearchValue"
+            (searchChange)="onSearchChange($event)"
+            (cleared)="onSearchCleared()"
+          />
+        </div>
+      </mat-option>
+    }
+
+    @for (option of filteredList; track option) {
+      <mat-option [value]="option">{{ getOptionLabel(option) }}</mat-option>
+    }
+
+    @if (filteredList.length === 0) {
+      <mat-option disabled>No se encontraron resultados</mat-option>
+    }
+  </mat-select>
+
+  @if (optional && !formController?.value) {
+    <span matTextSuffix class="gds-select-optional">Opcional</span>
+  }
+
+  @if (errorMessage) {
+    <mat-error>{{ errorMessage }}</mat-error>
+  }
+</mat-form-field>

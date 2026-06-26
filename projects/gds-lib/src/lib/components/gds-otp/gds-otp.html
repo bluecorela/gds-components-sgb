@@ -1,1 +1,18 @@
-<p>gds-otp works!</p>
+<div class="gds-otp">
+  @for (i of boxIndexes; track i) {
+    <input
+      #otpBox
+      class="gds-otp__box"
+      type="text"
+      inputmode="numeric"
+      maxlength="1"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [class.gds-otp__box--filled]="digits[i]"
+      (input)="onInput($event, i)"
+      (keydown)="onKeydown($event, i)"
+      (focus)="onFocus($event)"
+      (paste)="onPaste($event, i)"
+    />
+  }
+</div>

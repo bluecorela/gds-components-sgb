@@ -1,0 +1,53 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.gds-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 48px;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  &:focus-within {
+    border-color: #00693c;
+  }
+}
+
+.gds-search-input {
+  flex: 1;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  color: #1e1e1e;
+  background-color: #ffffff;
+
+  &::placeholder {
+    color: #949494;
+  }
+}
+
+.gds-search-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  svg path {
+    fill: #1e1e1e;
+    transition: fill 0.2s ease;
+  }
+
+  &--action {
+    &:hover svg path {
+      fill: #00693c;
+    }
+  }
+}

@@ -1,1 +1,8 @@
-<p>gds-bullets works!</p>
+<div class="gds-bullets">
+  @for (item of items; track item.label) {
+    <div class="gds-bullets__item" [class.gds-bullets__item--valid]="item.valid">
+      <mat-icon class="gds-bullets__icon" [svgIcon]="item.valid ? 'bullet' : 'gray-bullet'"></mat-icon>
+      <span class="gds-bullets__text">{{ item.label }}</span>
+    </div>
+  }
+</div>

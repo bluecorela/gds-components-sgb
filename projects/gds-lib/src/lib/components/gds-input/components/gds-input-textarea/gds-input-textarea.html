@@ -1,0 +1,21 @@
+<div class="gds-input-textarea" [style.--gds-error-color]="errorColor">
+  @if (title) {
+    <div class="gds-input-textarea__title">{{ title }}</div>
+  }
+
+  <textarea
+    class="gds-input-textarea__field"
+    [class.gds-input-textarea__field--error]="validateError()"
+    [placeholder]="placeholder"
+    [rows]="rows"
+    [formControl]="formController"
+    [attr.maxlength]="maxLength || null"
+    (change)="onChange()"
+  ></textarea>
+
+  @if (showErrors && errorMessage) {
+    <div class="gds-input-textarea__error" [style.color]="errorColor">{{ errorMessage }}</div>
+  } @else if (subtitle) {
+    <div class="gds-input-textarea__subtitle">{{ subtitle }}</div>
+  }
+</div>

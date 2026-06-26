@@ -1,0 +1,42 @@
+@use '../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.gds-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8px;
+    color: #666666;
+    transition: color 0.3s ease;
+
+    &--valid {
+      color: #00693c;
+
+      .gds-bullets__text {
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__icon {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    flex-shrink: 0;
+    // compensa el line-height del texto
+    margin-top: 1px;
+  }
+
+  &__text {
+    @include gds-font-nunito($font-size: 12px, $line-height: 18px, $color: inherit);
+    white-space: pre-line;
+  }
+}
