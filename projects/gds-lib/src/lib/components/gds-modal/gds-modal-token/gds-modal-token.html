@@ -1,0 +1,27 @@
+<div class="token">
+  <div class="token__title">SGB Token</div>
+
+  <div class="token__otp">
+    <lib-gds-otp
+      #otpRef
+      [length]="6"
+      [disabled]="otpDisabled"
+      [value]="tokenValue"
+      (otpChange)="onOtpChange($event)"
+    />
+  </div>
+
+  @if (data.showCounter) {
+    <div class="token__counter">
+      <div class="token__text">Tiene una duración de:</div>
+      <div class="token__time" [ngClass]="getTimeClass()">00:{{ counterDisplay }}</div>
+    </div>
+  }
+
+  <div class="token__actions">
+    <button class="token__button" [disabled]="confirmDisabled" (click)="confirm()">
+      Continuar
+    </button>
+    <button class="token__button-outline" (click)="close()">Salir</button>
+  </div>
+</div>

@@ -1,1 +1,50 @@
-<p>gds-modal works!</p>
+@switch (data.type) {
+
+  @case ('RATES') {
+    <div class="rates__content">
+      <div class="title">Promedio mensual <br />(Al cierre de mes)</div>
+      <div class="rates__wrapper">
+        @for (rate of ratesTable; track $index) {
+          <div
+            [class.rates__title]="$index < 2"
+            [class.rates__text]="$index >= 2">
+            {{ rate }}
+          </div>
+        }
+      </div>
+      <button class="button" (click)="close()">Aceptar</button>
+    </div>
+  }
+
+  @case ('EXIT') {
+    <div class="exit__content">
+      <div class="exit__icon">
+        <mat-icon svgIcon="gds-modal-info" class="exit__icon-svg"></mat-icon>
+      </div>
+      <div class="title exit__title">¿Quieres salir?</div>
+      <div class="description">
+        Puedes retomar la apertura de tu cuenta cuando quieras
+      </div>
+      <div class="actions">
+        <button class="button" (click)="close()">Continuar con la solicitud</button>
+        <button class="button-outline" (click)="confirmExit()">Salir de la solicitud</button>
+      </div>
+    </div>
+  }
+
+  @case ('INFO') {
+    <div class="info__content">
+      <p class="info__text">
+        @for (part of infoTextParts; track $index) {
+          @if (part.bold) {
+            <b class="info__bold">{{ part.text }}</b>
+          } @else {
+            {{ part.text }}
+          }
+        }
+      </p>
+      <button class="button mt-32" (click)="close()">Aceptar</button>
+    </div>
+  }
+
+}

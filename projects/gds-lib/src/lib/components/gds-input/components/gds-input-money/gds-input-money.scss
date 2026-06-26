@@ -1,0 +1,81 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.gds-input-money {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    padding-left: 8px;
+    margin-bottom: 4px;
+    @include gds-font-nunito($font-weight: 700, $font-size: 16px, $line-height: 24px, $color: #3f3f3f);
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    @include gds-form-component($padding-left: 12px, $padding-right: 12px);
+    border: 1px solid #c4c4c4;
+    gap: 8px;
+
+    &:focus-within {
+      border-color: #00693c;
+    }
+
+    &--error {
+      border-color: var(--gds-error-color, #c30000) !important;
+    }
+  }
+
+  &__symbol {
+    @include gds-font-nunito($font-size: 16px, $line-height: 24px, $color: #3f3f3f);
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  &__field {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    @include gds-font-nunito($font-size: 16px, $line-height: 24px);
+    text-align: right;
+
+    &::placeholder {
+      color: #949494;
+    }
+  }
+
+  &__currency {
+    @include gds-font-nunito($font-size: 14px, $line-height: 24px, $color: #949494);
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  &__error {
+    padding-left: 16px;
+    padding-top: 4px;
+    @include gds-font-nunito(
+      $font-weight: 700,
+      $font-size: 12px,
+      $line-height: 18px,
+      $letter-spacing: 0.1px,
+      $color: #c30000
+    );
+  }
+
+  &__subtitle {
+    padding-left: 16px;
+    padding-top: 4px;
+    @include gds-font-nunito(
+      $font-weight: 700,
+      $font-size: 12px,
+      $line-height: 18px,
+      $letter-spacing: 0.1px,
+      $color: #949494
+    );
+  }
+}

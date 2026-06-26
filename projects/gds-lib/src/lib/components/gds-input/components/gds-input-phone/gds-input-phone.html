@@ -1,1 +1,57 @@
-<p>gds-input-phone works!</p>
+<div class="gds-input-phone" [style.--gds-error-color]="errorColor">
+  @if (title) {
+    <div class="gds-input-phone__title">{{ title }}</div>
+  }
+
+  @if (prefixPhone) {
+    <!-- Modo: código de área editable + número -->
+    <div class="gds-input-phone__row">
+      <input
+        type="text"
+        class="gds-input-phone__prefix-field"
+        [class.gds-input-phone__prefix-field--error]="prefixControl?.touched && prefixControl?.invalid"
+        placeholder="Cód."
+        inputmode="numeric"
+        autocomplete="off"
+        [attr.maxlength]="3"
+        [formControl]="prefixControl"
+      />
+      <input
+        type="text"
+        class="gds-input-phone__number-field"
+        [class.gds-input-phone__number-field--error]="validateError()"
+        [placeholder]="placeholder || 'Número de teléfono'"
+        inputmode="numeric"
+        autocomplete="off"
+        [attr.maxlength]="maxLength || null"
+        [formControl]="numberControl"
+      />
+    </div>
+  } @else {
+    <!-- Modo: número simple, con código de país estático opcional -->
+    <div
+      class="gds-input-phone__simple"
+      [class.gds-input-phone__simple--error]="validateError()"
+    >
+      @if (showCountryCodeLabel) {
+        <span class="gds-input-phone__country-code">{{ countryCode }}</span>
+      }
+      <input
+        type="text"
+        class="gds-input-phone__field"
+        [class.gds-input-phone__field--with-code]="showCountryCodeLabel"
+        [placeholder]="placeholder"
+        inputmode="numeric"
+        autocomplete="off"
+        [attr.maxlength]="maxLength || null"
+        [formControl]="numberControl"
+      />
+    </div>
+  }
+
+  @if (showErrors && errorMessage) {
+    <div class="gds-input-phone__error" [style.color]="errorColor">{{ errorMessage }}</div>
+  } @else if (subtitle) {
+    <div class="gds-input-phone__subtitle">{{ subtitle }}</div>
+  }
+</div>

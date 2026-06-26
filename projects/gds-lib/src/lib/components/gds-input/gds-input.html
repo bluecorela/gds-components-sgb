@@ -1,17 +1,61 @@
-<div>
-    <template if="type === 'text'">
-        <lib-gds-input-text></lib-gds-input-text>
-    </template>
-
-    <template if="type === 'phone'">
-        <lib-gds-input-phone></lib-gds-input-phone>
-    </template>
-
-    <template if="type === 'money'">
-        <lib-gds-input-money></lib-gds-input-money>
-    </template>
-
-    <template if="type === 'search'">
-        <lib-gds-input-search></lib-gds-input-search>
-    </template>
-</div>
+@switch (type) {
+  @case ('text') {
+    <lib-gds-input-text
+      [formController]="asFormControl"
+      [placeholder]="placeholder"
+      [title]="title"
+      [subtitle]="subtitle"
+      [showErrors]="showErrors"
+      [validations]="validations"
+      [errorColor]="errorColor"
+      [inputId]="inputId"
+      [readonly]="readonly"
+      [optional]="optional"
+      [textPattern]="textPattern"
+      [maxLength]="maxLength"
+      (valueChange)="valueChange.emit($event)"
+    />
+  }
+  @case ('money') {
+    <lib-gds-input-money
+      [formController]="asFormControl"
+      [placeholder]="placeholder"
+      [title]="title"
+      [subtitle]="subtitle"
+      [showErrors]="showErrors"
+      [validations]="validations"
+      [errorColor]="errorColor"
+      (valueChange)="valueChange.emit($event)"
+    />
+  }
+  @case ('phone') {
+    <lib-gds-input-phone
+      [formController]="formController"
+      [placeholder]="placeholder"
+      [title]="title"
+      [subtitle]="subtitle"
+      [showErrors]="showErrors"
+      [validations]="validations"
+      [errorColor]="errorColor"
+      [maxLength]="maxLength"
+      [prefixPhone]="prefixPhone"
+      [prefixValue]="prefixValue"
+      [countryCode]="countryCode"
+      (valueChange)="valueChange.emit($event)"
+    />
+  }
+  @case ('textarea') {
+    <lib-gds-input-textarea
+      [formController]="asFormControl"
+      [placeholder]="placeholder"
+      [title]="title"
+      [subtitle]="subtitle"
+      [showErrors]="showErrors"
+      [validations]="validations"
+      [errorColor]="errorColor"
+      [maxLength]="maxLength"
+      [rows]="rows"
+      (valueChange)="valueChange.emit($event)"
+    />
+  }
+}

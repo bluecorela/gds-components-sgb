@@ -1,0 +1,172 @@
+@use '../styles/mixins' as *;
+
+// ── Host ───────────────────────────────────────────────────────────────────
+
+:host {
+  display: block;
+}
+
+// ── Form field ─────────────────────────────────────────────────────────────
+
+.gds-select-field {
+  width: 100%;
+
+  // Borde del outline sin notch visible
+  ::ng-deep .mdc-notched-outline__leading {
+    border-radius: 8px 0 0 8px !important;
+    border-color: #c4c4c4 !important;
+    min-width: 8px !important;
+  }
+
+  ::ng-deep .mdc-notched-outline__notch {
+    border-color: #c4c4c4 !important;
+    border-top: 1px solid #c4c4c4 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  ::ng-deep .mdc-notched-outline__trailing {
+    border-radius: 0 8px 8px 0 !important;
+    border-color: #c4c4c4 !important;
+  }
+
+  // Cierra el gap del notch al hacer focus
+  ::ng-deep .mdc-notched-outline--notched .mdc-notched-outline__notch {
+    border-top: 1px solid #c4c4c4 !important;
+  }
+
+  // Focus — borde verde
+  ::ng-deep .mat-focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #00693c !important;
+    }
+
+    .mdc-notched-outline--notched .mdc-notched-outline__notch {
+      border-top: 1px solid #00693c !important;
+    }
+  }
+
+  // Error — borde rojo
+  ::ng-deep .mat-mdc-form-field.mat-form-field-invalid {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #c30000 !important;
+    }
+  }
+
+  // Texto seleccionado y placeholder
+  ::ng-deep .mat-mdc-select-value-text {
+    @include gds-font-nunito($color: #1e1e1e, $font-size: 16px, $line-height: 24px);
+  }
+
+  ::ng-deep .mat-mdc-select-trigger {
+    padding: 0px 16px !important;
+  }
+
+  ::ng-deep .mat-mdc-select-placeholder {
+    @include gds-font-nunito($color: #949494, $font-size: 16px, $line-height: 24px);
+  }
+
+  // Chevron: reemplaza flecha de Material con SVG custom
+  ::ng-deep .mat-mdc-select-arrow-wrapper {
+    transform: none !important;
+  }
+
+  ::ng-deep .mat-mdc-select-arrow svg {
+    display: none !important;
+  }
+
+  ::ng-deep .mat-mdc-select-arrow {
+    width: 24px !important;
+    height: 24px !important;
+    background-image: url(../../../assets/chevron_abajo.svg) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 24px !important;
+    border: none !important;
+    color: transparent !important;
+    transform: none !important;
+  }
+
+  // Mensaje de error
+  ::ng-deep .mat-mdc-form-field-error {
+    @include gds-font-nunito(
+      $font-weight: 700,
+      $color: #c30000,
+      $font-size: 12px,
+      $line-height: 18px,
+      $letter-spacing: 0.1px
+    );
+  }
+}
+
+// Chevron arriba cuando el panel está abierto
+// La clase .gds-select-open la pone el componente via [class.gds-select-open]="isOpen"
+.gds-select-field.gds-select-open {
+  ::ng-deep .mat-mdc-select-arrow {
+    background-image: url(../../../assets/chevron_arriba.svg) !important;
+    transform: none !important;
+  }
+}
+
+// ── Opcional suffix ────────────────────────────────────────────────────────
+
+.gds-select-optional {
+  @include gds-font-nunito($color: #949494, $font-size: 16px, $line-height: 24px);
+  margin-right: 4px;
+}
+
+// ── Panel (via panelClass="gds-select-panel") ──────────────────────────────
+
+::ng-deep .gds-select-panel {
+  border: 1px solid #c4c4c4 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  // Espaciado en ambas direcciones: hacia abajo y hacia arriba
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+
+  // Opción de búsqueda: sticky, sin estilos de mat-option
+  .gds-select-search-option {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #ffffff !important;
+    cursor: default;
+    opacity: 1 !important;
+    padding: 12px 12px 8px !important;
+    height: auto !important;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:hover {
+      background: #ffffff !important;
+    }
+
+    .mdc-list-item__primary-text {
+      width: 100%;
+      overflow: visible;
+    }
+  }
+
+  // Opciones normales — 16px de padding a los lados
+  .mat-mdc-option {
+    @include gds-font-nunito($color: #1e1e1e, $font-size: 16px, $line-height: 24px);
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+
+    &:hover:not(.mdc-list-item--disabled) {
+      background-color: rgba(0, 105, 60, 0.06) !important;
+    }
+
+    &.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+      background-color: rgba(0, 105, 60, 0.1) !important;
+
+      .mdc-list-item__primary-text {
+        color: #00693c !important;
+      }
+    }
+  }
+}

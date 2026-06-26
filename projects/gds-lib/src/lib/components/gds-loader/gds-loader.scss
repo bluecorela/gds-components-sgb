@@ -1,0 +1,65 @@
+@use '../styles/mixins' as *;
+
+// ── Fullscreen ────────────────────────────────────────────────────────────────
+
+.loader-fullscreen {
+  padding-top: env(safe-area-inset-top);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 40px;
+    gap: 24px;
+  }
+
+  &__img {
+    width: 96px;
+    height: auto;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__title {
+    @include gds-font-nunito(
+      $font-weight: 800,
+      $color: #3f3f3f,
+      $letter-spacing: 0.1px,
+      $font-size: 22px,
+      $line-height: 27.5px
+    );
+    text-align: center;
+  }
+
+  &__subtitle {
+    @include gds-font-nunito(
+      $font-weight: 400,
+      $color: #3f3f3f,
+      $letter-spacing: 0.1px,
+      $font-size: 14px,
+      $line-height: 21px
+    );
+    text-align: center;
+  }
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+
+.loader-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  // El fondo transparente se aplica via panelClass en el servicio
+  background: transparent;
+
+  &__img {
+    width: 96px;
+    height: auto;
+  }
+}

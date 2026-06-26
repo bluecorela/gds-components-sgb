@@ -1,1 +1,30 @@
-<p>gds-input-text works!</p>
+<div class="gds-input-text" [style.--gds-error-color]="errorColor">
+  @if (title) {
+    <div class="gds-input-text__title">{{ title }}</div>
+  }
+
+  <div class="gds-input-text__wrapper">
+    <input
+      type="text"
+      [id]="inputId"
+      class="gds-input-text__field"
+      [class.gds-input-text__field--error]="validateError()"
+      [placeholder]="placeholder"
+      autocomplete="off"
+      [formControl]="formController"
+      [attr.maxlength]="maxLength || null"
+      [readonly]="readonly"
+      (input)="onTextInput($event)"
+      (change)="onChange()"
+    />
+    @if (optional && !formController?.value) {
+      <span class="gds-input-text__optional">Opcional</span>
+    }
+  </div>
+
+  @if (showErrors && errorMessage) {
+    <div class="gds-input-text__error" [style.color]="errorColor">{{ errorMessage }}</div>
+  } @else if (subtitle) {
+    <div class="gds-input-text__subtitle">{{ subtitle }}</div>
+  }
+</div>

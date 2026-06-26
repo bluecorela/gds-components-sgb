@@ -17,6 +17,8 @@ export * from './lib/components/gds-radiobutton/gds-radiobutton';
 export * from './lib/components/gds-otp/gds-otp';
 export * from './lib/components/gds-modal/gds-modal';
 export * from './lib/components/gds-loader/gds-loader';
+export * from './lib/components/gds-loader/gds-loader.service';
+export * from './lib/components/gds-modal/gds-modal-token/gds-modal-token';
 export * from './lib/components/gds-input/components/gds-input-calendar/gds-input-calendar';
 export * from './lib/components/gds-input/components/gds-input-money/gds-input-money';
 export * from './lib/components/gds-input/components/gds-input-phone/gds-input-phone';
